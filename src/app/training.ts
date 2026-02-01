@@ -29,10 +29,13 @@ const getFormatedText = (text: string, format: TypeTextFormat): string => {
 	switch (format) {
 		case "uppercase":
 			return text.toUpperCase();
+			break;
 		case "lowercase":
 			return text.toLowerCase();
+			break;
 		case "capitalize":
 			return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+			break;
 		default:
 			return text;
 	}
