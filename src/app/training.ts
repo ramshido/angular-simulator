@@ -11,21 +11,21 @@ interface IPlayer extends IUser {
 	strength: string;
 }
 
-type TypeUploadStatus = "loading" | "success" | "error";
+type UploadStatus = "loading" | "success" | "error";
 
-let uploadingStatus: TypeUploadStatus;
+let uploadingStatus: UploadStatus;
 
-type TypeTextFormat = 'uppercase' | 'lowercase' | 'capitalize';
+type TextFormat = 'uppercase' | 'lowercase' | 'capitalize';
 
-let textFormat: TypeTextFormat;
+let textFormat: TextFormat;
 
-function getSum(a: number, b: number): number {
+function sum(a: number, b: number): number {
 	return a + b;
 }
 
-console.log(getSum(5, 5));
+console.log(sum(5, 5));
 
-const getFormatedText = (text: string, format: TypeTextFormat): string => {
+const formatText = (text: string, format: TextFormat): string => {
 	switch (format) {
 		case "uppercase":
 			return text.toUpperCase();
@@ -41,13 +41,13 @@ const getFormatedText = (text: string, format: TypeTextFormat): string => {
 	}
 }
 
-getFormatedText("Salam", "uppercase");
+formatText("Salam", "uppercase");
 
-const getRemovedSymbol: (text: string, symbol: string) => string = (text: string, symbol: string): string => {
+const getTextWithoutSymbol: (text: string, symbol: string) => string = (text: string, symbol: string): string => {
 	return text.replaceAll(symbol, "");
 }
 
-getRemovedSymbol("Vlad", "V");
+getTextWithoutSymbol("Vlad", "V");
 
 const users: IUser[] = [
 	{
