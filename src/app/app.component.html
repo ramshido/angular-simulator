@@ -1,1 +1,60 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+	<div class="container">
+		<nav class="header__nav">
+			<div class="logo-wrapper header__logo-wrapper">
+				<img src="/icons/svg/rumtibet-logo.svg" alt="logo" class="logo-img">
+			</div>
+			<ul class="header__nav-links fz-18px fw-600 white-clr">
+				<li class="header__nav-link">Главная</li>
+				<li class="header__nav-link">Про гида</li>
+				<li class="header__nav-link">Программа тура</li>
+				<li class="header__nav-link">Стоимость</li>
+				<li class="header__nav-link">Блог</li>
+				<li class="header__nav-link">Контакты</li>
+			</ul>
+			<button class="btn header__btn">Консультация</button>
+		</nav>
+		<h1 class="header__title white-clr fw-400">
+			Насладись прогулкой в горах <br>
+			с командой единомышленников
+		</h1>
+		<div class="tour-booking">
+			<form class="tour-booking__form">
+
+				<div class="tour-booking__input-wrapper">
+					<div class="tour-booking__icon-container">
+						<img src="/icons/svg/ep_arrow-down.svg" alt="Default Icon" class="tour-booking__arrow-icon">
+						<select name="location" id="location" class="tour-booking__input">
+							<option value="">Участники</option>
+							<option value="dog">Dog</option>
+							<option value="cat">Cat</option>
+							<option value="hamster">Hamster</option>
+						</select>
+					</div>
+					<label for="location" class="tour-booking__select-subtitle">выберите из списка</label>
+				</div>
+
+				<div class="tour-booking__input-wrapper">
+					<input type="date" placeholder="Дата похода" required class="tour-booking__input tour-booking__input-custom"
+						(click)="showDatePicker($event)">
+					<label for="location" class="tour-booking__select-subtitle">укажите дату</label>
+				</div>
+
+				<div class="tour-booking__input-wrapper">
+					<div class="tour-booking__icon-container">
+						<img src="/icons/svg/ep_arrow-down.svg" alt="Default Icon" class="tour-booking__arrow-icon">
+						<select name="location" id="location" class="tour-booking__input">
+							<option value="">Участники</option>
+							<option value="dog">Dog</option>
+							<option value="cat">Cat</option>
+							<option value="hamster">Hamster</option>
+						</select>
+					</div>
+					<label for="location" class="tour-booking__select-subtitle">выберите из списка</label>
+				</div>
+
+				<button class="tour-booking__form-btn">Найти программу</button>
+			</form>
+		</div>
+	</div>
+</header>
