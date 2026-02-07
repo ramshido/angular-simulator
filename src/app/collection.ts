@@ -1,5 +1,5 @@
 export class Collection<T> {
-	data: T[];
+	data: T[] = [];
 
 	constructor(data: T[]) {
 		this.data = data;
@@ -22,7 +22,7 @@ export class Collection<T> {
 	}
 
 	swapItem(item: T, index: number): void {
-		const newData = this.data;
+		const newData: T[] = this.data;
 		newData[index] = item;
 
 		this.data = [...newData];

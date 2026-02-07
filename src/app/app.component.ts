@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import './training';
 import './collection';
 import { Color } from '../enums/Color';
@@ -25,24 +24,22 @@ export class AppComponent {
 		this.setVisitCountToStorage();
 	}
 
-	LAST_VISIT = 'lastVisit';
-	VISIT_COUNT = 'visitCount';
+	LAST_VISIT: string = 'lastVisit';
+	VISIT_COUNT: string = 'visitCount';
 
 	setLastVisitDateToStorage(): void {
-		const date = new Date();
-
+		const date: Date = new Date();
 		localStorage.setItem(this.LAST_VISIT, JSON.stringify(date));
 	}
 
 	setVisitCountToStorage(): void {
-		const storageData = localStorage.getItem(this.VISIT_COUNT);
-		let visitCounter = storageData ? parseInt(storageData, 10) : 0;
+		const storageData: string | null = localStorage.getItem(this.VISIT_COUNT);
+		let visitCounter: number = storageData ? parseInt(storageData, 10) : 0;
 		visitCounter++;
 		localStorage.setItem(this.VISIT_COUNT, JSON.stringify(visitCounter));
 	}
 
-	showDatePicker(event: any) {
-		console.log(event);
+	showDatePicker(event: any): void {
 		event.target.showPicker();
 	}
 }

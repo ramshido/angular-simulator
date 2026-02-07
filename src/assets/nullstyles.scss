@@ -13,16 +13,6 @@ a:hover{text-decoration: none;}
 ul li{list-style: none;}
 img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
-
-input[type="date"], select {
-	appearance: none; /* Removes the default appearance */
-	-webkit-appearance: none; /* For Safari */
-	position: relative;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-}
-input[type="date"]::-webkit-calendar-picker-indicator {
-	opacity: 0; /* Hides the default icon */
-	display: block; /* Keeps it clickable */
-}
+input[type="date"], select {appearance: none;/* Removes the default appearance */-webkit-appearance: none; /* For Safari */position: relative; -webkit-user-select: none; /* Safari */-ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */}
+input[type="date"]::-webkit-calendar-picker-indicator {opacity: 0; /* Hides the default icon */display: block; /* Keeps it clickable */}
