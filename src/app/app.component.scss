@@ -1,0 +1,132 @@
+@mixin btn($width, $height, $text-color: var(--white-color), $bg-color: var(--secondary-greenish-color)) {
+	width: $width;
+	height: $height;
+	background-color: $bg-color;
+	color: $text-color;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.logo-wrapper {
+	width: 137px;
+	height: 72px;
+	cursor: pointer;
+}
+
+.logo-img {
+	display: block;
+	width: 100%;
+}
+
+.header {
+	padding-top: 16px;
+	padding-bottom: 82px;
+	background: url('/images/header-main-bg.jpg') center/cover no-repeat;
+	min-height: 985px;
+
+	&__nav {
+		height: 72px;
+		display: flex;
+		align-items: center;
+		margin-bottom: 463px;
+	}
+
+	&__logo-wrapper {
+		margin-right: 212px;
+	}
+
+	&__nav-links {
+		margin-right: 49px;
+		display: flex;
+		align-items: center;
+	}
+
+	&__nav-link {
+		&+& {
+			margin-left: 24px;
+		}
+
+		&:hover {
+			cursor: pointer;
+			border-bottom: 1px solid var(--white-color);
+		}
+	}
+
+	&__btn {
+		@include btn(157px, 44px);
+	}
+
+	&__title {
+		font-size: 50px;
+		line-height: 150%;
+		text-transform: uppercase;
+		margin-bottom: 41px;
+	}
+
+	&__title_show {
+		display: block;
+	}
+}
+
+.tour-booking {
+	min-height: 161px;
+	padding: 40px 42px;
+	border-radius: 10px;
+	backdrop-filter: blur(6px);
+	background: rgba(255, 255, 255, 0.2);
+
+	&__form {
+		display: flex;
+	}
+
+	&__input-wrapper {
+		margin-right: 24px;
+		display: flex;
+		flex-direction: column;
+		color: var(--white-color);
+	}
+
+	&__icon-container {
+		position: relative;
+	}
+
+	&__input {
+		width: 270px;
+		height: 52px;
+		padding: 0px 16px 0px 16px;
+		margin-bottom: 8px;
+		background: transparent;
+		border-radius: 8px;
+		border: 1px solid var(--white-color);
+		color: var(--white-color);
+		cursor: pointer;
+
+		option {
+			color: darkblue;
+		}
+	}
+
+	&__arrow-icon {
+		position: absolute;
+		top: 50%;
+		right: 16px;
+		transform: translateY(-70%);
+	}
+
+	&__input-custom::before {
+		content: url('/icons/svg/formkit_date.svg');
+		position: absolute;
+		right: 16px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&__select-subtitle {
+		padding-left: 8px;
+	}
+
+	&__form-btn {
+		@include btn(213px, 52px, var(--black-color), var(--white-color));
+	}
+}
