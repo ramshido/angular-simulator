@@ -1,4 +1,5 @@
 export class Collection<T> {
+
 	data: T[] = [];
 
 	constructor(data: T[]) {
@@ -17,8 +18,8 @@ export class Collection<T> {
 		this.data = [];
 	}
 
-	removeSpecificItem(ItemIndex: number): void {
-		this.data = this.data.filter((el: T, index: number) => ItemIndex !== index);
+	removeSpecificItem(itemIndex: number): void {
+		this.data = this.data.filter((el: T, index: number) => itemIndex !== index);
 	}
 
 	swapItem(item: T, index: number): void {
@@ -27,10 +28,11 @@ export class Collection<T> {
 
 		this.data = [...newData];
 	}
+
 }
 
-const array1: string[] = ['1', '45', 'item', 'any', 'true', 'null'];
-const array2: number[] = [45, 63, 10, 99];
+const anyStringArray: string[] = ['1', '45', 'item', 'any', 'true', 'null'];
+const numbers: number[] = [45, 63, 10, 99];
 
-const collection1 = new Collection<string>(array1);
-const collection2 = new Collection<number>(array2);
+const anyStringCollection: Collection<string> = new Collection<string>(anyStringArray);
+const numberCollection: Collection<number> = new Collection<number>(numbers);

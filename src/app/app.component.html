@@ -1,19 +1,19 @@
 <header class="header">
 	<div class="container">
-		<nav class="header__nav">
+		<div class="header__nav">
 			<div class="logo-wrapper header__logo-wrapper">
 				<img src="/icons/svg/rumtibet-logo.svg" alt="logo" class="logo-img">
 			</div>
-			<ul class="header__nav-links fz-18px fw-600 white-clr">
-				<li class="header__nav-link">Главная</li>
-				<li class="header__nav-link">Про гида</li>
-				<li class="header__nav-link">Программа тура</li>
-				<li class="header__nav-link">Стоимость</li>
-				<li class="header__nav-link">Блог</li>
-				<li class="header__nav-link">Контакты</li>
-			</ul>
+			<nav class="header__nav-links fz-18px fw-600 white-clr">
+				<a class="header__nav-link" id="main-page-move-link">Главная</a>
+				<a class="header__nav-link" id="about-guide-move-link">Про гида</a>
+				<a class="header__nav-link" id="tour-program-move-link">Программа тура</a>
+				<a class="header__nav-link" id="about-cost-move-link">Стоимость</a>
+				<a class="header__nav-link">Блог</a>
+				<a class="header__nav-link">Контакты</a>
+			</nav>
 			<button class="btn header__btn">Консультация</button>
-		</nav>
+		</div>
 		<h1 class="header__title white-clr fw-400">
 			Насладись прогулкой в горах <br>
 			с командой единомышленников
@@ -36,7 +36,7 @@
 
 				<div class="tour-booking__input-wrapper">
 					<input type="date" placeholder="Дата похода" required class="tour-booking__input tour-booking__input-custom"
-						(click)="showDatePicker($event)">
+						(click)="($event.target.showPicker())">
 					<label for="location" class="tour-booking__select-subtitle">укажите дату</label>
 				</div>
 
