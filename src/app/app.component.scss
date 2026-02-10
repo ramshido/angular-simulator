@@ -22,7 +22,7 @@
 .header {
 	padding-top: 16px;
 	padding-bottom: 82px;
-	background: url('/images/header-main-bg.jpg') center/cover no-repeat;
+	background: url('/images/mountains-bg.jpg') center/cover no-repeat;
 	min-height: 985px;
 
 	&__nav {
@@ -115,7 +115,7 @@
 	}
 
 	&__input-custom::before {
-		content: url('/icons/svg/formkit_date.svg');
+		content: url('/icons/svg/formkit-date-icon.svg');
 		position: absolute;
 		right: 16px;
 		top: 50%;
