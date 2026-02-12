@@ -65,3 +65,4 @@ const users: IUser[] = [
 ];
 
 const filteredUsers: IUser[] = users.filter((user: IUser) => user.id !== 2);
+

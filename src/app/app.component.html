@@ -1,1 +1,60 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+	<div class="container">
+		<div class="header__nav">
+			<div class="logo-wrapper header__logo-wrapper">
+				<img src="/icons/svg/rumtibet-logo.svg" alt="logo" class="logo-img">
+			</div>
+			<nav class="header__nav-links fz-18px fw-600 white-clr">
+				<a class="header__nav-link" id="main-page-move-link">Главная</a>
+				<a class="header__nav-link" id="about-guide-move-link">Про гида</a>
+				<a class="header__nav-link" id="tour-program-move-link">Программа тура</a>
+				<a class="header__nav-link" id="about-cost-move-link">Стоимость</a>
+				<a class="header__nav-link" id="blog-move-link">Блог</a>
+				<a class="header__nav-link" id="contacts-move-link">Контакты</a>
+			</nav>
+			<button class="btn header__btn" id="consultation-order-btn">Консультация</button>
+		</div>
+		<h1 class="header__title white-clr fw-400">
+			Насладись прогулкой в горах <br>
+			с командой единомышленников
+		</h1>
+		<div class="tour-booking">
+			<form class="tour-booking__form">
+
+				<div class="tour-booking__input-wrapper">
+					<div class="tour-booking__icon-container">
+						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
+						<select name="location" id="location" class="tour-booking__input" id="tour-location-select">
+							<option value="">Локация для тура</option>
+							<option value="dog">Гон Конг</option>
+							<option value="cat">Вьетнам</option>
+							<option value="hamster">Монголия</option>
+						</select>
+					</div>
+					<label for="location" class="tour-booking__select-subtitle">выберите из списка</label>
+				</div>
+
+				<div class="tour-booking__input-wrapper">
+					<input type="date" placeholder="Дата похода" required class="tour-booking__input tour-booking__input-custom"
+						(click)="($event.target.showPicker())" id="tour-date-input">
+					<label for="location" class="tour-booking__select-subtitle">укажите дату</label>
+				</div>
+
+				<div class="tour-booking__input-wrapper">
+					<div class="tour-booking__icon-container">
+						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
+						<select name="location" id="location" class="tour-booking__input" id="participants-select">
+							<option value="">Участники</option>
+							<option value="dog">Артем</option>
+							<option value="cat">Джек</option>
+							<option value="hamster">Александр</option>
+						</select>
+					</div>
+					<label for="location" class="tour-booking__select-subtitle">выберите из списка</label>
+				</div>
+
+				<button class="tour-booking__form-btn" id="program-find-btn">Найти программу</button>
+			</form>
+		</div>
+	</div>
+</header>
