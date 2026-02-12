@@ -16,22 +16,25 @@ export class AppComponent {
 		this.setVisitCount();
 	}
 
-	mainColors: string[] = [Color.RED, Color.BLUE, Color.GREEN];
-	isColorMain: boolean = this.mainColors.includes(Color.PURPLE);
-
-	LAST_VISIT: string = 'last-visit';
-	VISIT_COUNT: string = 'visit-count';
+	isMainColor(): boolean {
+		const mainColors: string[] = [Color.RED, Color.BLUE, Color.GREEN];
+		return mainColors.includes(Color.PURPLE);
+	}
 
 	setLastVisitDate(): void {
+		const LAST_VISIT_KEY: string = 'last-visit';
+
 		const date: Date = new Date();
-		localStorage.setItem(this.LAST_VISIT, JSON.stringify(date));
+		localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(date));
 	}
 
 	setVisitCount(): void {
-		const storageData: string | null = localStorage.getItem(this.VISIT_COUNT);
+		const VISIT_COUNT_KEY: string = 'visit-count';
+
+		const storageData: string | null = localStorage.getItem(VISIT_COUNT_KEY);
 		let visitCounter: number = storageData ? parseInt(storageData, 10) : 0;
 		visitCounter++;
-		localStorage.setItem(this.VISIT_COUNT, JSON.stringify(visitCounter));
+		localStorage.setItem(VISIT_COUNT_KEY, JSON.stringify(visitCounter));
 	}
 
 }
