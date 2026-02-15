@@ -1,8 +1,9 @@
 <header class="header">
 	<div class="container">
 		<div class="header__nav">
-			<div class="logo-wrapper header__logo-wrapper">
-				<img src="/icons/svg/rumtibet-logo.svg" alt="logo" class="logo-img">
+			<div class="logo__wrapper header__logo-wrapper">
+				<img src="/icons/svg/rumtibet-logo.svg" alt="logo" class="logo__img">
+				<span class="logo__company-name fw-400 fz-18px white-clr">{{companyNmae}}</span>
 			</div>
 			<nav class="header__nav-links fz-18px fw-600 white-clr">
 				<a class="header__nav-link" id="main-page-move-link">Главная</a>
@@ -12,7 +13,7 @@
 				<a class="header__nav-link" id="blog-move-link">Блог</a>
 				<a class="header__nav-link" id="contacts-move-link">Контакты</a>
 			</nav>
-			<button class="btn header__btn" id="consultation-order-btn">Консультация</button>
+			<button class="header__btn" id="consultation-order-btn">Консультация</button>
 		</div>
 		<h1 class="header__title white-clr fw-400">
 			Насладись прогулкой в горах <br>
@@ -24,7 +25,7 @@
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select name="location" id="location" class="tour-booking__input" id="tour-location-select">
+						<select name="location" class="tour-booking__input" id="tour-location-select">
 							<option value="">Локация для тура</option>
 							<option value="dog">Гон Конг</option>
 							<option value="cat">Вьетнам</option>
@@ -43,7 +44,7 @@
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select name="location" id="location" class="tour-booking__input" id="participants-select">
+						<select name="location" class="tour-booking__input" id="participants-select">
 							<option value="">Участники</option>
 							<option value="dog">Артем</option>
 							<option value="cat">Джек</option>
@@ -58,3 +59,57 @@
 		</div>
 	</div>
 </header>
+<main class="main">
+	<section class="about-campaign">
+		<div class="container">
+			<div class="about-campaign__wrapper">
+				<div class="about-campaign__left-media-wrapper">
+					<img src="/images/high-mountain.png" alt="landscape" class="about-campaign__img">
+					<div class="about-campaign__video-container">
+						<video autoplay muted loop class="about-campaign__video">
+							<source src="/videos/mountains-tour.mp4" type="video/mp4">
+						</video>
+					</div>
+				</div>
+				<div class="about-campaign__right-program-wrapper">
+					<h3 class="about-campaign__subtitle">о нашем походе</h3>
+					<h2 class="about-campaign__title">Исследуйте все горные массивы мира вместе с нами</h2>
+					<div class="about-campaign__historical-descr">
+						Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад.
+						Ричард
+						МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в
+						Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.
+					</div>
+					<button class="about-campaign__btn" id="about-campaign-btn">Программа тура</button>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+
+<div class="test-control-flow">
+
+	@for(item of items; track item.id) {
+	@if (status === 'loading') {
+	<p>Загрузка данных</p>
+
+	} @else if (status === 'error') {
+	<p>Ошибка</p>
+	} @else {
+	<div class="test-control-flow__card" [id]="'card-' + item.id" [class.active]="item.id === selectedItemId"
+		(click)="onSelectItem(item.id)">
+		<img [src]="item.id === selectedItemId ? 
+				'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FgtakVlnStZUbe%2Fgiphy.gif&f=1&nofb=1&ipt=cb24e4819eb0cb0ecd4f25c019d18880666d69579cf1bdca69bb1fb7f08ed977' :
+				'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fofficial.link%2Fuploads%2Fblock_images%2Fe273c583ce0f246878b2aadff58ffac5.gif&f=1&nofb=1&ipt=2e138a4e725dbe83975ed870d217e902e5bdacd18e0fd4c7cf46eff41f6ee666'
+				" alt="img" class="test-control-flow__img">
+		<p [class.active]="item.id === selectedItemId">{{item.id}}</p>
+		<p>{{item.title}}</p>
+		<p>{{item.descr}}</p>
+	</div>
+	}
+
+	} @empty {
+	<p>Пусто</p>
+	}
+</div>
