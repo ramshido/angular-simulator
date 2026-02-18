@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import './training';
 import './collection';
 import { Color } from '../assets/enums/Color';
-import { IКакой_нибудь_интерфейс } from '../assets/interfaces/IКакой-нибудь-интерфейс';
+import { IAdvantageInfo } from '../assets/interfaces/Advantage';
 
 @Component({
 	selector: 'app-root',
-	imports: [],
+	imports: [FormsModule],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
@@ -14,26 +17,29 @@ export class AppComponent {
 
 	readonly companyNmae: string = 'рутимбет'.toUpperCase();
 
-	readonly items: IКакой_нибудь_интерфейс[] = [
+	selectedItemId: number = 0;
+	status: string = '';
+	isFormValid: boolean = true;
+	readonly advantagesInfo: IAdvantageInfo[] = [
 		{
 			id: 1,
-			title: 'Пивет',
-			descr: 'lorem;sdeijv;jisp;dijgfp;oreij;rvj;ldfjigr'
+			icon: 'people-group-green-icon',
+			title: 'Опытный гид',
+			descr: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
 		},
 		{
 			id: 2,
-			title: 'Пивет',
-			descr: 'lorem;sdeijv;jisp;dijgfp;oreij;rvj;ldfjigr'
+			icon: 'shield-blue-icon',
+			title: 'Безопасный поход',
+			descr: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
 		},
 		{
 			id: 3,
-			title: 'Пивет',
-			descr: 'lorem;sdeijv;jisp;dijgfp;oreij;rvj;ldfjigr'
+			icon: 'bookmark-yellow-icon',
+			title: 'Лояльные цены',
+			descr: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
 		}
 	];
-
-	selectedItemId: number = 0;
-	status: string = '';
 
 	constructor() {
 		this.setLastVisitDate();
@@ -61,9 +67,8 @@ export class AppComponent {
 		localStorage.setItem(VISIT_COUNT_KEY, JSON.stringify(visitCounter));
 	}
 
-	onSelectItem(id: number): void {
+	selectItem(id: number): void {
 		this.selectedItemId = id;
 	}
-
 }
 
