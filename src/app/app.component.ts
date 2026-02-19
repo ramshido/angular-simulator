@@ -35,7 +35,6 @@ export class AppComponent {
 			descr: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
 		}
 	];
-
 	selectedItemId: number = 0;
 	status: string = '';
 	tourLocation: string = '';
@@ -75,7 +74,6 @@ export class AppComponent {
 		console.log('submit');
 		console.log(this.tourLocation);
 		console.log(this.participants);
-
 	}
 }
 

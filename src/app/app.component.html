@@ -128,30 +128,3 @@
 
 
 </main>
-
-
-<!-- <div class="test-control-flow">
-
-	@for(item of items; track item.id) {
-	@if (status === 'loading') {
-	<p>Загрузка данных</p>
-
-	} @else if (status === 'error') {
-	<p>Ошибка</p>
-	} @else {
-	<div class="test-control-flow__card" [id]="'card-' + item.id" [class.active]="item.id === selectedItemId"
-		(click)="onSelectItem(item.id)">
-		<img [src]="item.id === selectedItemId ? 
-				'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FgtakVlnStZUbe%2Fgiphy.gif&f=1&nofb=1&ipt=cb24e4819eb0cb0ecd4f25c019d18880666d69579cf1bdca69bb1fb7f08ed977' :
-				'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fofficial.link%2Fuploads%2Fblock_images%2Fe273c583ce0f246878b2aadff58ffac5.gif&f=1&nofb=1&ipt=2e138a4e725dbe83975ed870d217e902e5bdacd18e0fd4c7cf46eff41f6ee666'
-				" alt="img" class="test-control-flow__img">
-		<p [class.active]="item.id === selectedItemId">{{item.id}}</p>
-		<p>{{item.title}}</p>
-		<p>{{item.descr}}</p>
-	</div>
-	}
-
-	} @empty {
-	<p>Пусто</p>
-	}
-</div> -->
