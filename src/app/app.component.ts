@@ -71,9 +71,7 @@ export class AppComponent {
 	}
 
 	onSubmit(): void {
-		console.log('submit');
-		console.log(this.tourLocation);
-		console.log(this.participants);
+		console.log('Form submitted');
 	}
 }
 

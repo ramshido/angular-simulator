@@ -3,7 +3,7 @@
 		<div class="header__nav">
 			<div class="logo__wrapper header__logo-wrapper">
 				<img src="/icons/svg/rumtibet-logo.svg" alt="logo" class="logo__img">
-				<span class="logo__company-name fw-400 fz-18px white-clr">{{companyNmae}}</span>
+				<span class="logo__company-name fw-400 fz-18px white-clr">{{ companyNmae }}</span>
 			</div>
 			<nav class="header__nav-links fz-18px fw-600 white-clr">
 				<a class="header__nav-link" id="main-page-move-link">Главная</a>
@@ -25,7 +25,8 @@
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select id="tour-location-select" name="tour-location" class="tour-booking__input"  [(ngModel)]="tourLocation" required ngModel>
+						<select id="tour-location-select" name="tour-location" class="tour-booking__input"
+							[(ngModel)]="tourLocation" required ngModel>
 							<option value="" disabled>Локация для тура</option>
 							<option value="Gon-Kong">Гон Конг</option>
 							<option value="Vetnam">Вьетнам</option>
@@ -36,15 +37,17 @@
 				</div>
 
 				<div class="tour-booking__input-wrapper">
-					<input type="date" name="date" placeholder="Дата похода" required class="tour-booking__input tour-booking__input-custom"
-						(click)="($event.target.showPicker())" id="tour-date-input" ngModel>
+					<input type="date" name="date" placeholder="Дата похода" required
+						class="tour-booking__input tour-booking__input-custom" (click)="($event.target.showPicker())"
+						id="tour-date-input" ngModel>
 					<label for="location" class="tour-booking__select-subtitle">укажите дату</label>
 				</div>
 
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select id="participants-select" name="participants" class="tour-booking__input" [(ngModel)]="participants" required ngModel>
+						<select id="participants-select" name="participants" class="tour-booking__input" [(ngModel)]="participants"
+							required ngModel>
 							<option value="" disabled>Участники</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
@@ -56,7 +59,8 @@
 					<label for="participants-select" class="tour-booking__select-subtitle">выберите из списка</label>
 				</div>
 
-				<button class="tour-booking__form-btn" id="program-find-btn" [disabled]="form.invalid" type="submit">Найти программу</button>
+				<button class="tour-booking__form-btn" id="program-find-btn" [disabled]="form.invalid" type="submit">Найти
+					программу</button>
 			</form>
 		</div>
 	</div>
@@ -102,11 +106,12 @@
 					<ul class="advantages__advantages-list">
 						@for (item of advantagesInfo; track item.id) {
 						<li class="advantages__advantage-item">
-							<img src="/icons/svg/{{item.icon}}.svg" alt="bookmark-yellow-icon" class="advantages__advantage-item-img">
+							<img src="/icons/svg/{{ item.icon }}.svg" alt="bookmark-yellow-icon"
+								class="advantages__advantage-item-img">
 							<div class="advantages__advantage-item-descr">
-								<span class="advantages__advantage-item-title fz-18px fw-800">{{item.title}}</span>
+								<span class="advantages__advantage-item-title fz-18px fw-800">{{ item.title }}</span>
 								<p class="advantages__advantage-item-paragraph fz-14px fw-400">
-									{{item.descr}}
+									{{ item.descr }}
 								</p>
 							</div>
 						</li>
