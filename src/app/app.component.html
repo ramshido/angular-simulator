@@ -20,41 +20,43 @@
 			с командой единомышленников
 		</h1>
 		<div class="tour-booking">
-			<form class="tour-booking__form">
+			<form class="tour-booking__form" #form="ngForm" (ngSubmit)="onSubmit()">
 
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select name="location" class="tour-booking__input" id="tour-location-select">
-							<option value="">Локация для тура</option>
-							<option value="Gon Kong">Гон Конг</option>
+						<select id="tour-location-select" name="tour-location" class="tour-booking__input"  [(ngModel)]="tourLocation" required ngModel>
+							<option value="" disabled>Локация для тура</option>
+							<option value="Gon-Kong">Гон Конг</option>
 							<option value="Vetnam">Вьетнам</option>
 							<option value="Mongolia">Монголия</option>
 						</select>
 					</div>
-					<label for="location" class="tour-booking__select-subtitle">выберите из списка</label>
+					<label for="tour-location" class="tour-booking__select-subtitle">выберите из списка</label>
 				</div>
 
 				<div class="tour-booking__input-wrapper">
-					<input type="date" placeholder="Дата похода" required class="tour-booking__input tour-booking__input-custom"
-						(click)="($event.target.showPicker())" id="tour-date-input">
+					<input type="date" name="date" placeholder="Дата похода" required class="tour-booking__input tour-booking__input-custom"
+						(click)="($event.target.showPicker())" id="tour-date-input" ngModel>
 					<label for="location" class="tour-booking__select-subtitle">укажите дату</label>
 				</div>
 
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select name="location" class="tour-booking__input" id="participants-select" placeholder="Участники">
-							<option value=""></option>
-							<option value="Artem">Артем</option>
-							<option value="Jek">Джек</option>
-							<option value="Alexandr">Александр</option>
+						<select id="participants-select" name="participants" class="tour-booking__input" [(ngModel)]="participants" required ngModel>
+							<option value="" disabled>Участники</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
 						</select>
 					</div>
-					<label for="location" class="tour-booking__select-subtitle">выберите из списка</label>
+					<label for="participants-select" class="tour-booking__select-subtitle">выберите из списка</label>
 				</div>
 
-				<button class="tour-booking__form-btn" id="program-find-btn" [disabled]="isFormValid">Найти программу</button>
+				<button class="tour-booking__form-btn" id="program-find-btn" [disabled]="form.invalid" type="submit">Найти программу</button>
 			</form>
 		</div>
 	</div>
@@ -99,7 +101,7 @@
 
 					<ul class="advantages__advantages-list">
 						@for (item of advantagesInfo; track item.id) {
-							<li class="advantages__advantage-item">
+						<li class="advantages__advantage-item">
 							<img src="/icons/svg/{{item.icon}}.svg" alt="bookmark-yellow-icon" class="advantages__advantage-item-img">
 							<div class="advantages__advantage-item-descr">
 								<span class="advantages__advantage-item-title fz-18px fw-800">{{item.title}}</span>
@@ -116,7 +118,8 @@
 					<img src="/images/glass-by-the-sea.png" alt="glass-by-the-sea" class="advantages__media-img">
 					<img src="/images/man-at-the-canyon.png" alt="man-at-the-canyon" class="advantages__media-img">
 					<img src="/images/man-on-snowy-mountain.png" alt="man-on-snowy-mountain" class="advantages__media-img">
-					<img src="/images/landscape-plain-with-mountains.png" alt="landscape-plain-with-mountains" class="advantages__media-img">
+					<img src="/images/landscape-plain-with-mountains.png" alt="landscape-plain-with-mountains"
+						class="advantages__media-img">
 				</div>
 			</div>
 		</div>

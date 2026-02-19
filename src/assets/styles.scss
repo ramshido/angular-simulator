@@ -80,3 +80,20 @@
 	font-weight: 800;
 	font-size: 32px;
 }
+
+input[type="date"]:invalid:not(:focus)::-webkit-datetime-edit {
+	color: transparent;
+}
+
+input[type="date"]:invalid:not(:focus):before {
+	content: attr(placeholder);
+	color: #ffffff;
+	position: absolute;
+	left: 16px;
+	font-weight: 700;
+	font-size: 16px;
+}
+
+input[type="date"] {
+	position: relative;
+}

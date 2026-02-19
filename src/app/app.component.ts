@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 
 import './training';
 import './collection';
@@ -16,10 +15,6 @@ import { IAdvantageInfo } from '../assets/interfaces/Advantage';
 export class AppComponent {
 
 	readonly companyNmae: string = 'рутимбет'.toUpperCase();
-
-	selectedItemId: number = 0;
-	status: string = '';
-	isFormValid: boolean = true;
 	readonly advantagesInfo: IAdvantageInfo[] = [
 		{
 			id: 1,
@@ -40,6 +35,11 @@ export class AppComponent {
 			descr: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
 		}
 	];
+
+	selectedItemId: number = 0;
+	status: string = '';
+	tourLocation: string = '';
+	participants: string = '';
 
 	constructor() {
 		this.setLastVisitDate();
@@ -69,6 +69,13 @@ export class AppComponent {
 
 	selectItem(id: number): void {
 		this.selectedItemId = id;
+	}
+
+	onSubmit(): void {
+		console.log('submit');
+		console.log(this.tourLocation);
+		console.log(this.participants);
+
 	}
 }
 

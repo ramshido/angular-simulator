@@ -141,6 +141,10 @@
 
 	&__form-btn {
 		@include btn(213px, 52px, var(--black-color), var(--white-color));
+		&:disabled {
+			color: rgb(0, 0, 0);
+			background-color: rgba(219, 219, 219, 0.397);
+		}
 	}
 }
 
