@@ -15,6 +15,7 @@ import { IAdvantageInfo } from '../assets/interfaces/Advantage';
 export class AppComponent {
 
 	readonly companyNmae: string = 'рутимбет'.toUpperCase();
+
 	readonly advantagesInfo: IAdvantageInfo[] = [
 		{
 			id: 1,
@@ -35,14 +36,21 @@ export class AppComponent {
 			descr: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
 		}
 	];
+
 	selectedItemId: number = 0;
 	status: string = '';
 	tourLocation: string = '';
 	participants: string = '';
+	isClicker: boolean = false;
+	counter: number = 1;
+	dateToday: string = '';
+	isLoading: boolean = true
 
 	constructor() {
 		this.setLastVisitDate();
 		this.setVisitCount();
+		this.startDateTimer();
+		this.breakPageLoading();
 	}
 
 	private isMainColor(): boolean {
@@ -72,6 +80,34 @@ export class AppComponent {
 
 	onSubmit(): void {
 		console.log('Form submitted');
+	}
+
+	formatDate(date = new Date()): void {
+		const day = String(date.getDate()).padStart(2, '0');
+		const month = String(date.getMonth() + 1).padStart(2, '0');
+		const year = date.getFullYear();
+		const hours = date.getHours(); // без ведущего нуля (как в примере)
+		const minutes = String(date.getMinutes()).padStart(2, '0');
+		const seconds = String(date.getSeconds()).padStart(2, '0');
+
+		this.dateToday = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+	}
+
+	startDateTimer(): void {
+		if (!this.isClicker) {
+			setInterval(() => { this.formatDate(); }, 1000);
+		}
+	}
+
+	toggleClicker(): void {
+		this.isClicker = !this.isClicker;
+		this.startDateTimer();
+	}
+
+	breakPageLoading(): void {
+		setTimeout(() => {
+			this.isLoading = !this.isLoading; 
+		}, 2000)
 	}
 }
 

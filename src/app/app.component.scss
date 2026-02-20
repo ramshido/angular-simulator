@@ -43,6 +43,7 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 463px;
+		position: relative;
 	}
 
 	&__logo-wrapper {
@@ -82,12 +83,72 @@
 	}
 }
 
+.clicker-date {
+
+	&__wrapper {
+		position: absolute;
+		right: 0;
+		bottom: -50px;
+
+		display: flex;
+		align-items: center;
+	}
+
+	&__info {
+		margin-right: 50px;
+		font-weight: 600;
+		font-size: 24px;
+		color: var(--white-color);
+	}
+
+	&__clicker-container {
+		button {
+			width: 1em;
+			background: inherit;
+			color: inherit;
+			font-size: inherit;
+			transition: background-color .5s ease;
+			border-radius: 15px;
+			background-color: var(--secondary-greenish-color);
+
+			&:hover {
+				background-color: #135757;
+			}
+		}
+	}
+
+	&__counter {
+		margin: 0 16px;
+	}
+
+	&__minus {
+		&:disabled {
+			background-color: #224e4e !important;
+			color: gray !important;
+		}
+	}
+
+	&__date {
+		color: inherit;
+		font-size: inherit;
+	}
+
+	&__btn {
+		@include btn(157px, 44px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+}
+
 .tour-booking {
 	min-height: 161px;
 	padding: 40px 42px;
 	border-radius: 10px;
 	backdrop-filter: blur(6px);
 	background: rgba(255, 255, 255, 0.2);
+	position: relative;
 
 	&__form {
 		display: flex;
@@ -141,9 +202,26 @@
 
 	&__form-btn {
 		@include btn(213px, 52px, var(--black-color), var(--white-color));
+
 		&:disabled {
 			color: rgb(0, 0, 0);
 			background-color: rgba(219, 219, 219, 0.397);
+		}
+	}
+
+	&__live-input {
+		position: absolute;
+		bottom: -70px;
+		display: flex;
+
+		input::placeholder {
+			color: white;
+		}
+
+		&__live-text {
+			width: 300px;
+			height: 20px;
+			border-bottom: 1px solid white;
 		}
 	}
 }
@@ -332,4 +410,48 @@
 	}
 
 
+}
+
+.loading-modal {
+	display: none;
+
+	&__wrapper {
+		width: 400px;
+		height: 200px;
+		background-color: #fff;
+		border-radius: 15px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__img {
+		width: 51px;
+		height: 51px;
+		animation-name: loading-arrows;
+		animation-duration: 3s; 
+		animation-iteration-count: infinite;
+	}
+
+	&_active {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(109, 109, 109, 0.8);
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@keyframes loading-arrows {
+	from {
+		transform: rotate(0dg);
+	}
+
+	to {
+		transform: rotate(-360deg);
+	}
 }

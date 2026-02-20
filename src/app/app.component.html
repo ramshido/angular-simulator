@@ -14,6 +14,21 @@
 				<a class="header__nav-link" id="contacts-move-link">Контакты</a>
 			</nav>
 			<button class="header__btn" id="consultation-order-btn">Консультация</button>
+			<div class="clicker-date__wrapper">
+				<div class="clicker-date__info">
+					@if (isClicker) {
+					<div class="clicker-date__clicker-container">
+						<button class="clicker-date__plus" (click)="counter += 1">+</button>
+						<span class="clicker-date__counter">{{ counter }}</span>
+						<button class="clicker-date__minus" (click)="counter -= 1" [disabled]="counter <= 0">-</button>
+					</div>
+					} @else {
+					<p class="clicker-date__date">{{ dateToday }}</p>
+					}
+				</div>
+				<div class="clicker-date__btn" (click)="toggleClicker()">{{ isClicker ? 'Показать дату' : 'Показать кликер' }}
+				</div>
+			</div>
 		</div>
 		<h1 class="header__title white-clr fw-400">
 			Насладись прогулкой в горах <br>
@@ -59,9 +74,16 @@
 					<label for="participants-select" class="tour-booking__select-subtitle">выберите из списка</label>
 				</div>
 
-				<button class="tour-booking__form-btn" id="program-find-btn" [disabled]="form.invalid" type="submit">Найти
-					программу</button>
+				<button class="tour-booking__form-btn" id="program-find-btn" [disabled]="form.invalid" type="submit">
+					Найти программу
+				</button>
+				<div class="tour-booking__input-wrapper tour-booking__live-input">
+					<input type="text" placeholder="Введите текст" class="tour-booking__input tour-booking__input-custom"
+						(click)="($event)" id="tour-date-input" #liveInput>
+					<span class="tour-booking__live-text">{{ liveInput.value }}</span>
+				</div>
 			</form>
+
 		</div>
 	</div>
 </header>
@@ -130,3 +152,8 @@
 		</div>
 	</section>
 </main>
+<div [class]="isLoading ? 'loading-modal_active' : 'loading-modal'">
+	<div class="loading-modal__wrapper">
+		<img src="/icons/svg/loading-arrows.svg" alt="loading-arrows" class="loading-modal__img">
+	</div>
+</div>
