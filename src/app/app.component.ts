@@ -53,6 +53,15 @@ export class AppComponent {
 		this.breakPageLoading();
 	}
 
+	toggleClicker(): void {
+		this.isClicker = !this.isClicker;
+		this.startDateTimer();
+	}
+
+	onSubmit(): void {
+		console.log('Form submitted');
+	}
+
 	private isMainColor(): boolean {
 		const mainColors: string[] = [Color.RED, Color.BLUE, Color.GREEN];
 		return mainColors.includes(Color.PURPLE);
@@ -74,15 +83,7 @@ export class AppComponent {
 		localStorage.setItem(VISIT_COUNT_KEY, JSON.stringify(visitCounter));
 	}
 
-	selectItem(id: number): void {
-		this.selectedItemId = id;
-	}
-
-	onSubmit(): void {
-		console.log('Form submitted');
-	}
-
-	formatDate(date = new Date()): void {
+	private formatDate(date = new Date()): void {
 		const day = String(date.getDate()).padStart(2, '0');
 		const month = String(date.getMonth() + 1).padStart(2, '0');
 		const year = date.getFullYear();
@@ -93,18 +94,13 @@ export class AppComponent {
 		this.dateToday = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
 	}
 
-	startDateTimer(): void {
+	private startDateTimer(): void {
 		if (!this.isClicker) {
 			setInterval(() => { this.formatDate(); }, 1000);
 		}
 	}
 
-	toggleClicker(): void {
-		this.isClicker = !this.isClicker;
-		this.startDateTimer();
-	}
-
-	breakPageLoading(): void {
+	private breakPageLoading(): void {
 		setTimeout(() => {
 			this.isLoading = !this.isLoading; 
 		}, 2000)
