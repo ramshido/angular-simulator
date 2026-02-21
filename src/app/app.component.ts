@@ -4,7 +4,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import './training';
 import './collection';
 import { Color } from '../assets/enums/Color';
-import { IAdvantageInfo } from '../assets/interfaces/Advantage';
+import { IAdvantage } from '../assets/interfaces/Advantage';
 
 @Component({
 	selector: 'app-root',
@@ -14,9 +14,9 @@ import { IAdvantageInfo } from '../assets/interfaces/Advantage';
 })
 export class AppComponent {
 
-	readonly companyNmae: string = 'рутимбет'.toUpperCase();
+	readonly companyNmae: string = 'рутимбет';
 
-	readonly advantagesInfo: IAdvantageInfo[] = [
+	readonly advantagesInfo: IAdvantage[] = [
 		{
 			id: 1,
 			icon: 'people-group-green-icon',
@@ -44,22 +44,23 @@ export class AppComponent {
 	isClicker: boolean = false;
 	counter: number = 1;
 	dateToday: string = '';
-	isLoading: boolean = true
+	isLoading: boolean = true;
 
 	constructor() {
 		this.setLastVisitDate();
 		this.setVisitCount();
-		this.startDateTimer();
-		this.breakPageLoading();
-	}
 
-	toggleClicker(): void {
-		this.isClicker = !this.isClicker;
-		this.startDateTimer();
+		setTimeout(() => {
+			this.isLoading = !this.isLoading;
+		}, 2000);
+
+		setInterval(() => {
+			this.dateToday = new Date().toLocaleString();
+		}, 1000);
 	}
 
 	onSubmit(): void {
-		console.log('Form submitted');
+		alert('Form submitted');
 	}
 
 	private isMainColor(): boolean {
@@ -83,27 +84,5 @@ export class AppComponent {
 		localStorage.setItem(VISIT_COUNT_KEY, JSON.stringify(visitCounter));
 	}
 
-	private formatDate(date = new Date()): void {
-		const day = String(date.getDate()).padStart(2, '0');
-		const month = String(date.getMonth() + 1).padStart(2, '0');
-		const year = date.getFullYear();
-		const hours = date.getHours(); // без ведущего нуля (как в примере)
-		const minutes = String(date.getMinutes()).padStart(2, '0');
-		const seconds = String(date.getSeconds()).padStart(2, '0');
-
-		this.dateToday = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
-	}
-
-	private startDateTimer(): void {
-		if (!this.isClicker) {
-			setInterval(() => { this.formatDate(); }, 1000);
-		}
-	}
-
-	private breakPageLoading(): void {
-		setTimeout(() => {
-			this.isLoading = !this.isLoading; 
-		}, 2000)
-	}
 }
 

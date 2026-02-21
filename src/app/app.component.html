@@ -17,17 +17,18 @@
 			<div class="clicker-date__wrapper">
 				<div class="clicker-date__info">
 					@if (isClicker) {
-					<div class="clicker-date__clicker-container">
-						<button class="clicker-date__plus" (click)="counter += 1">+</button>
-						<span class="clicker-date__counter">{{ counter }}</span>
-						<button class="clicker-date__minus" (click)="counter -= 1" [disabled]="counter <= 0">-</button>
-					</div>
+						<div class="clicker-date__clicker-container">
+							<button class="clicker-date__plus" (click)="counter += 1">+</button>
+							<span class="clicker-date__counter">{{ counter }}</span>
+							<button class="clicker-date__minus" (click)="counter -= 1" [disabled]="counter <= 0">-</button>
+						</div>
 					} @else {
-					<p class="clicker-date__date">{{ dateToday }}</p>
+						<p class="clicker-date__date">{{ dateToday }}</p>
 					}
 				</div>
-				<div class="clicker-date__btn" (click)="toggleClicker()">{{ isClicker ? 'Показать дату' : 'Показать кликер' }}
-				</div>
+				<button class="clicker-date__btn" (click)="isClicker = !isClicker">{{ isClicker ? 'Показать дату' : 'Показать кликер'
+					}}
+				</button>
 			</div>
 		</div>
 		<h1 class="header__title white-clr fw-400">
@@ -40,8 +41,14 @@
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select id="tour-location-select" name="tour-location" class="tour-booking__input"
-							[(ngModel)]="tourLocation" required ngModel>
+						<select 
+						  id="tour-location-select" 
+						  name="tour-location" 
+						  class="tour-booking__input"
+							[(ngModel)]="tourLocation" 
+							required 
+							ngModel
+						>
 							<option value="" disabled>Локация для тура</option>
 							<option value="Gon-Kong">Гон Конг</option>
 							<option value="Vetnam">Вьетнам</option>
@@ -52,17 +59,30 @@
 				</div>
 
 				<div class="tour-booking__input-wrapper">
-					<input type="date" name="date" placeholder="Дата похода" required
-						class="tour-booking__input tour-booking__input-custom" (click)="($event.target.showPicker())"
-						id="tour-date-input" ngModel>
+					<input 
+						type="date" 
+						name="date" 
+						placeholder="Дата похода" 
+						required
+						class="tour-booking__input tour-booking__input-custom" 
+						(click)="($event.target.showPicker())"
+						id="tour-date-input" 
+						ngModel
+					>
 					<label for="location" class="tour-booking__select-subtitle">укажите дату</label>
 				</div>
 
 				<div class="tour-booking__input-wrapper">
 					<div class="tour-booking__icon-container">
 						<img src="/icons/svg/ep-arrow-down-icon.svg" alt="Default Icon" class="tour-booking__arrow-icon">
-						<select id="participants-select" name="participants" class="tour-booking__input" [(ngModel)]="participants"
-							required ngModel>
+						<select 
+							id="participants-select"
+							name="participants"
+						  class="tour-booking__input" 
+						  [(ngModel)]="participants"
+							required 
+							ngModel
+						>
 							<option value="" disabled>Участники</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
@@ -78,8 +98,14 @@
 					Найти программу
 				</button>
 				<div class="tour-booking__input-wrapper tour-booking__live-input">
-					<input type="text" placeholder="Введите текст" class="tour-booking__input tour-booking__input-custom"
-						(click)="($event)" id="tour-date-input" #liveInput>
+					<input 
+						type="text" 
+						placeholder="Введите текст" 
+						class="tour-booking__input tour-booking__input-custom"
+						(click)="($event)" 
+						id="tour-date-input" 
+						#liveInput
+					>
 					<span class="tour-booking__live-text">{{ liveInput.value }}</span>
 				</div>
 			</form>
@@ -127,16 +153,19 @@
 
 					<ul class="advantages__advantages-list">
 						@for (item of advantagesInfo; track item.id) {
-						<li class="advantages__advantage-item">
-							<img src="/icons/svg/{{ item.icon }}.svg" alt="bookmark-yellow-icon"
-								class="advantages__advantage-item-img">
-							<div class="advantages__advantage-item-descr">
-								<span class="advantages__advantage-item-title fz-18px fw-800">{{ item.title }}</span>
-								<p class="advantages__advantage-item-paragraph fz-14px fw-400">
-									{{ item.descr }}
-								</p>
-							</div>
-						</li>
+							<li class="advantages__advantage-item">
+								<img 
+									src="/icons/svg/{{ item.icon }}.svg" 
+									alt="bookmark-yellow-icon"
+									class="advantages__advantage-item-img"
+								>
+								<div class="advantages__advantage-item-descr">
+									<span class="advantages__advantage-item-title fz-18px fw-800">{{ item.title }}</span>
+									<p class="advantages__advantage-item-paragraph fz-14px fw-400">
+										{{ item.descr }}
+									</p>
+								</div>
+							</li>
 						}
 					</ul>
 					<button class="advantages__btn" id="program-cost-btn">Стоимость программ</button>
@@ -153,8 +182,11 @@
 	</section>
 </main>
 
-<div [class]="isLoading ? 'loading-modal_active' : 'loading-modal'">
-	<div class="loading-modal__wrapper">
-		<img src="/icons/svg/loading-arrows.svg" alt="loading-arrows" class="loading-modal__img">
+@if (isLoading) {
+	<div class="loading-modal">
+		<div class="loading-modal__wrapper">
+			<img src="/icons/svg/loading-arrows-icon.svg" alt="loading-arrows" class="loading-modal__img">
+		</div>
 	</div>
-</div>
+}
+
