@@ -50,7 +50,6 @@
 	font-weight: 800;
 }
 
-// font-size
 .fz-14px {
 	font-size: 14px;
 }
@@ -69,4 +68,32 @@
 
 .fz-32px {
 	font-size: 32px;
+}
+
+.subtitle {
+	font-weight: 400;
+	font-size: 24px;
+	color: var(--secondary-yellow-color);
+}
+
+.title {
+	font-weight: 800;
+	font-size: 32px;
+}
+
+input[type="date"]:invalid:not(:focus)::-webkit-datetime-edit {
+	color: transparent;
+}
+
+input[type="date"]:invalid:not(:focus):before {
+	content: attr(placeholder);
+	color: #ffffff;
+	position: absolute;
+	left: 16px;
+	font-weight: 700;
+	font-size: 16px;
+}
+
+input[type="date"] {
+	position: relative;
 }
