@@ -4,7 +4,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import './training';
 import './collection';
 import { Color } from '../assets/enums/Color';
-import { IAdvantage } from '../assets/interfaces/Advantage';
+import { IAdvantage } from '../assets/interfaces/IAdvantage';
 
 @Component({
 	selector: 'app-root',
@@ -14,9 +14,9 @@ import { IAdvantage } from '../assets/interfaces/Advantage';
 })
 export class AppComponent {
 
-	readonly companyNmae: string = 'рутимбет';
+	companyNmae: string = 'рутимбет';
 
-	readonly advantagesInfo: IAdvantage[] = [
+	advantagesInfo: IAdvantage[] = [
 		{
 			id: 1,
 			icon: 'people-group-green-icon',
@@ -51,7 +51,7 @@ export class AppComponent {
 		this.setVisitCount();
 
 		setTimeout(() => {
-			this.isLoading = !this.isLoading;
+			this.isLoading = false;
 		}, 2000);
 
 		setInterval(() => {
