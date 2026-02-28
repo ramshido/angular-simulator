@@ -5,6 +5,7 @@ import './training';
 import './collection';
 import { Color } from '../assets/enums/Color';
 import { IAdvantage } from '../assets/interfaces/IAdvantage';
+import { IPopularDestination } from '../assets/interfaces/IPopularDestinations';
 
 @Component({
 	selector: 'app-root',
@@ -37,6 +38,36 @@ export class AppComponent {
 		}
 	];
 
+	popularDestinations: IPopularDestination[] = [
+		{
+			id: 1,
+			img: 'lake-near-mountains',
+			title: 'Озеро возле гор',
+			subtitle: 'романтическое приключение',
+			price: 480,
+			currency: '&#36;',
+			reviewsEvaluation: 4.9,
+		},
+		{
+			id: 2,
+			img: 'mountains-at-starry-sky',
+			title: 'Ночь в горах',
+			subtitle: 'в компании друзей',
+			price: 500,
+			currency: '&#36;',
+			reviewsEvaluation: 4.5,
+		},
+		{
+			id: 3,
+			img: 'yoga-on-mountain',
+			title: 'Йога в горах',
+			subtitle: 'для тех, кто забоится о себе',
+			price: 230,
+			currency: '&#36;',
+			reviewsEvaluation: 5.0,
+		}
+	];
+
 	selectedItemId: number = 0;
 	status: string = '';
 	tourLocation: string = '';
@@ -63,6 +94,10 @@ export class AppComponent {
 		alert('Form submitted');
 	}
 
+	get Enum(): typeof Color {
+		return Color;
+	}
+
 	private isMainColor(): boolean {
 		const mainColors: string[] = [Color.RED, Color.BLUE, Color.GREEN];
 		return mainColors.includes(Color.PURPLE);
@@ -85,4 +120,3 @@ export class AppComponent {
 	}
 
 }
-

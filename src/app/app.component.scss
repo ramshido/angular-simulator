@@ -452,3 +452,114 @@
 		transform: rotate(-360deg);
 	}
 }
+
+.popular-destinations {
+	padding-top: 80px;
+	padding-bottom: 100px;
+
+	&__subtitle {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	&__title {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	&__tours-wrapper {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 50px;
+	}
+
+	&__tour-card {
+		width: 380px;
+		height: 500px;
+		position: relative;
+		border-radius: 24px;
+		overflow: hidden;
+		transition: all .5s ease;
+		cursor: pointer;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+
+	&__img {
+		width: 100%;
+		object-fit: cover;
+	}
+
+	&__reviews-evaluation {
+		width: 65px;
+		height: 32px;
+		border-radius: 4px 0px 0px 4px;
+		backdrop-filter: blur(4px);
+		background: rgba(253, 253, 253, 0.4);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		position: absolute;
+		top: 45px;
+		right: 0;
+
+		&::before {
+			content: '';
+			display: block;
+			width: 17px;
+			height: 16px;
+			background: url('/icons/svg/popular-destinations/yellow-star-icon.svg') 50%/cover no-repeat;
+			margin-right: 8px;
+		}
+	}
+
+	&__info-wrapper {
+		padding: 0 32px;
+		width: 380px;
+		height: 90px;
+		border-radius: 0px 0px 32px 32px;
+		backdrop-filter: blur(6px);
+		background: rgba(255, 255, 255, 0.2);
+
+		position: absolute;
+		bottom: 0;
+
+		display: flex;
+		align-items: center;
+	}
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__info-descr {
+		margin-right: 35px;
+	}
+
+	&__info-title {
+		margin-bottom: 8px;
+	}
+
+	&__price {
+		width: 86px;
+		height: 40px;
+		font-size: 20px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		border-radius: 4px;
+		background: rgba(255, 255, 255, 0.3);
+	}
+
+	&__btn {
+		@include btn(244px, 52px);
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+}

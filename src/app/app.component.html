@@ -133,6 +133,7 @@
 						Ричард
 						МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в
 						Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.
+						{{Enum.PINK}}
 					</div>
 					<button class="about-campaign__btn" id="about-campaign-btn">Программа тура</button>
 				</div>
@@ -178,6 +179,30 @@
 						class="advantages__media-img">
 				</div>
 			</div>
+		</div>
+	</section>
+	<section class="popular-destinations">
+		<div class="container">
+			<h3 class="popular-destinations__subtitle subtitle">по версии отдыхающих</h3>
+			<h2 class="popular-destinations__title title">Популярные направления</h2>
+			<div class="popular-destinations__tours-wrapper">
+				@for (item of popularDestinations; track item.id) {
+					<div class="popular-destinations__tour-card" id="popular-destinations-card">
+						<img src="/images/popular-destinations/{{ item.img }}.png" alt="{{ item.img }}" class="popular-destinations__img">
+						<span class="popular-destinations__reviews-evaluation fw-600 fz-14px">{{ item.reviewsEvaluation }}</span>
+						<div class="popular-destinations__info-wrapper">
+							<div class="popular-destinations__info white-clr">
+								<div class="popular-destinations__info-descr">
+									<h2 class="popular-destinations__info-title fz-24px fw-600">{{ item.title }}</h2>
+									<h3 class="popular-destinations__info-subtitle fw-400 fz-14px">{{ item.subtitle }}</h3>
+								</div>
+								<span class="popular-destinations__price fw-800">{{ item.price }} &#36;</span>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+			<button class="popular-destinations__btn" id="popular-destinations-btn">Рейтинг направлений</button>
 		</div>
 	</section>
 </main>
