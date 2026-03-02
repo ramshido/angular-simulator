@@ -133,7 +133,6 @@
 						Ричард
 						МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в
 						Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.
-						{{Enum.PINK}}
 					</div>
 					<button class="about-campaign__btn" id="about-campaign-btn">Программа тура</button>
 				</div>
@@ -202,7 +201,31 @@
 					</div>
 				}
 			</div>
-			<button class="popular-destinations__btn" id="popular-destinations-btn">Рейтинг направлений</button>
+			<button class="popular-destinations__btn" id="popular-destinations-btn" (click)="addMessage(messageType.ERROR, 'Ошибка')">Рейтинг направлений</button>
+		</div>
+	</section>
+	<section class="travel-blog">
+		<div class="container">
+			<h3 class="travel-blog__subtitle subtitle">делимся впечатлениями</h3>
+			<h2 class="travel-blog__title title">Блог о путешествиях</h2>
+			<div class="travel-blog__cards-wrapper">
+				@for (item of toursBlog; track item.id) {
+					<a href="#" class="travel-blog__tour-card" id="travel-blog-card">
+						<img src="/images/travel-blog/{{ item.img }}.png" alt="{{ item.img }}" class="travel-blog__img">
+						<div class="travel-blog__card-info">
+							<div class="travel-blog__card-upper-content">
+								<div class="travel-blog__card-title fw-800 fz-24px">{{ item.title }}</div>
+								<div class="travel-blog__card-descr fw-400 fz-14px">{{ item.descr }}</div>
+							</div>
+							<div class="travel-blog__card-down-content">
+								<span class="travel-blog__date fw-800 fz-14px yellow-clr">{{ item.date }}</span>
+								<span class="travel-blog__read-article fw-600 fz-14px">читать статью</span>
+							</div>
+						</div>
+					</a>
+				}
+			</div>
+			<button class="travel-blog__btn" id="travel-blog-btn" (click)="addMessage(messageType.INFO, 'Это сообщение из блога о турах')">Другие материалы</button>
 		</div>
 	</section>
 </main>
@@ -214,4 +237,35 @@
 		</div>
 	</div>
 }
+
+<ng-template #messageWrapper let-title="title" let-subtitle="subtitle">
+	<div class="message">
+		<img src="/icons/svg/message/message-letter-icon.svg" alt="message-icon" class="message__letter-icon">
+		<div class="message__text-wrapper fz-16px white-clr">
+			<div class="message__title fw-800">{{ title }}</div>
+			<div class="message__descr fw-400">{{ subtitle }}</div>
+		</div>
+		<button class="message__close-btn-wrapper" id="message-close-btn" (click)="closeMessage()">
+			<img src="/icons/svg/message/message-close-icon.svg" alt="message-close-icon" class="message__close-btn-icon">
+		</button>
+	</div>
+</ng-template>
+
+@if (this.messagesService.messages.length) {
+	<div class="message__block-wrapper">
+		@for (item of messagesService.messages; track item.id) {
+			<ng-container 
+				*ngTemplateOutlet="
+					messageWrapper; 
+					context: {
+						title: item.type, 
+						subtitle: item.message,
+					}
+				"
+			></ng-container>	
+		}	
+	</div>
+}
+
+
 

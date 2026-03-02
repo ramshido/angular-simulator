@@ -552,7 +552,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		
+
 		border-radius: 4px;
 		background: rgba(255, 255, 255, 0.3);
 	}
@@ -561,5 +561,129 @@
 		@include btn(244px, 52px);
 		margin-left: 50%;
 		transform: translateX(-50%);
+	}
+}
+
+.travel-blog {
+	padding-top: 80px;
+	padding-bottom: 100px;
+	background-color: var(--section-bg-white-color);
+
+	&__title {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	&__subtitle {
+		text-align: center;
+		margin-bottom: 8px;
+	}
+
+	&__card-title {
+		margin-bottom: 24px;
+	}
+
+	&__cards-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		margin-bottom: 50px;
+	}
+
+	&__tour-card {
+		padding: 16px;
+		width: 580px;
+		height: 312px;
+		background-color: var(--white-color);
+		border-radius: 10px;
+		display: flex;
+		position: relative;
+
+		transition: all .5s ease;
+		cursor: pointer;
+
+		&:hover {
+			transform: scale(1.05);
+			box-shadow: 0px 0px 15px 0px rgba(24, 18, 30, 0.12);
+
+			.travel-blog__card-title {
+				text-decoration: underline;
+				color: rgba(26, 62, 62, 1);
+			}
+		}
+	}
+
+	&__img {
+		width: 230px;
+		height: 280px;
+		object-fit: cover;
+		margin-right: 24px;
+	}
+
+	&__card-down-content {
+		width: 294px;
+		position: absolute;
+		bottom: 16px;
+		right: 16px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__btn {
+		@include btn(244px, 52px);
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.message {
+	width: 350px;
+	height: 70px; // + 80px
+	background-color: #0F172AD9;
+	border-radius: 10px;
+	border: 1px solid white;
+	padding: 15px 27px 15px 15px;
+	margin-bottom: 10px;
+
+	display: flex;
+	transition: all .5s ease;
+	position: relative;
+
+	&__block-wrapper {
+		position: fixed;
+		top: 100px;
+		right: 60px;
+	}
+
+	&__letter-icon {
+		margin-right: 15px;
+		width: 40px;
+		height: 40px;
+	}
+
+	&__text-wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__title {
+		margin-bottom: 5px;
+	}
+
+	&__close-btn-wrapper {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 7px;
+		right: 7px;
+		background-color: inherit;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	&__close-btn-icon {
+		width: 100%;
 	}
 }
