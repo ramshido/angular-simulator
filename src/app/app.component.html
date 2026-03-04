@@ -238,14 +238,14 @@
 	</div>
 }
 
-<ng-template #messageWrapper let-title="title" let-subtitle="subtitle">
+<ng-template #messageWrapper let-title="title" let-subtitle="subtitle" let-id="id">
 	<div class="message">
 		<img src="/icons/svg/message/message-letter-icon.svg" alt="message-icon" class="message__letter-icon">
 		<div class="message__text-wrapper fz-16px white-clr">
 			<div class="message__title fw-800">{{ title }}</div>
 			<div class="message__descr fw-400">{{ subtitle }}</div>
 		</div>
-		<button class="message__close-btn-wrapper" id="message-close-btn" (click)="closeMessage()">
+		<button class="message__close-btn-wrapper" id="message-close-btn" (click)="closeMessage(id)">
 			<img src="/icons/svg/message/message-close-icon.svg" alt="message-close-icon" class="message__close-btn-icon">
 		</button>
 	</div>
@@ -258,6 +258,7 @@
 				*ngTemplateOutlet="
 					messageWrapper; 
 					context: {
+						id: item.id,
 						title: item.type, 
 						subtitle: item.message,
 					}

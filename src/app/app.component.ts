@@ -3,13 +3,14 @@ import { FormsModule } from '@angular/forms';
 
 import './training';
 import './collection';
-import { Color } from '../assets/enums/Color';
-import { IAdvantage } from '../assets/interfaces/IAdvantage';
-import { IPopularDestination } from '../assets/interfaces/IPopularDestinations';
-import { ITourBlog } from '../assets/interfaces/ITourBlog';
-import { MessageType } from '../assets/enums/MessageType';
+import { Color } from './enums/Color';
+import { IAdvantage } from './interfaces/IAdvantage';
+import { IPopularDestination } from './interfaces/IPopularDestinations';
+import { ITourBlog } from './interfaces/ITourBlog';
+import { MessageType } from './enums/MessageType';
 import { MessagesService } from './services/messages.service';
 import { NgTemplateOutlet } from '@angular/common';
+import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
 	selector: 'app-root',
@@ -112,6 +113,7 @@ export class AppComponent {
 	dateToday: string = '';
 	isLoading: boolean = true;
 	messagesService: MessagesService = inject(MessagesService);
+	localStorageService: LocalStorageService = inject(LocalStorageService);
 
 	constructor() {
 		this.setLastVisitDate();
@@ -124,6 +126,12 @@ export class AppComponent {
 		setInterval(() => {
 			this.dateToday = new Date().toLocaleString();
 		}, 1000);
+
+		setInterval(() => {
+			if (this.messagesService.messages.length) {
+				this.messagesService.closeMessage();
+			}
+		}, 10000);
 	}
 
 	onSubmit(): void {
@@ -135,15 +143,15 @@ export class AppComponent {
 	}
 
 	addMessage(type: MessageType, message: string): void {
-		this.messagesService.addMessage({ 
+		this.messagesService.addMessage({
 			id: new Date().getTime(),
-			type, 
-			message 
+			type,
+			message
 		});
 	}
 
-	closeMessage(): void {
-		this.messagesService.closeMessage();
+	closeMessage(id? : number): void {
+		this.messagesService.closeMessage(id);
 	}
 
 	private isMainColor(): boolean {
@@ -155,16 +163,18 @@ export class AppComponent {
 		const LAST_VISIT_KEY: string = 'last-visit';
 
 		const date: Date = new Date();
-		localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(date));
+		this.localStorageService.setData<Date>(LAST_VISIT_KEY, date);
+		
 	}
 
 	private setVisitCount(): void {
 		const VISIT_COUNT_KEY: string = 'visit-count';
 
-		const storageData: string | null = localStorage.getItem(VISIT_COUNT_KEY);
-		let visitCounter: number = storageData ? parseInt(storageData, 10) : 0;
+		const storageData: number | null = this.localStorageService.getData<number>(VISIT_COUNT_KEY);
+		let visitCounter: number = storageData ? Number(storageData) : 0;
 		visitCounter++;
 		localStorage.setItem(VISIT_COUNT_KEY, JSON.stringify(visitCounter));
 	}
 
 }
+
