@@ -5,7 +5,7 @@ import './training';
 import './collection';
 import { Color } from './enums/Color';
 import { IAdvantage } from './interfaces/IAdvantage';
-import { IPopularDestination } from './interfaces/IPopularDestinations';
+import { IPopularDestination } from './interfaces/IPopularDestination';
 import { ITourBlog } from './interfaces/ITourBlog';
 import { MessageType } from './enums/MessageType';
 import { MessagesService } from './services/messages.service';
@@ -114,6 +114,7 @@ export class AppComponent {
 	isLoading: boolean = true;
 	messagesService: MessagesService = inject(MessagesService);
 	localStorageService: LocalStorageService = inject(LocalStorageService);
+	messageType: typeof MessageType = MessageType;
 
 	constructor() {
 		this.setLastVisitDate();
@@ -126,31 +127,20 @@ export class AppComponent {
 		setInterval(() => {
 			this.dateToday = new Date().toLocaleString();
 		}, 1000);
-
-		setInterval(() => {
-			if (this.messagesService.messages.length) {
-				this.messagesService.closeMessage();
-			}
-		}, 10000);
 	}
 
 	onSubmit(): void {
 		alert('Form submitted');
 	}
 
-	get messageType(): typeof MessageType {
-		return MessageType;
-	}
-
 	addMessage(type: MessageType, message: string): void {
 		this.messagesService.addMessage({
-			id: new Date().getTime(),
 			type,
 			message
 		});
 	}
 
-	closeMessage(id? : number): void {
+	closeMessage(id : number): void {
 		this.messagesService.closeMessage(id);
 	}
 
