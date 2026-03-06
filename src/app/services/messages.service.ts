@@ -7,14 +7,6 @@ export class MessagesService {
 
 	messages: IMessage[] = [];
 
-	constructor() {
-		setInterval(() => {
-			if (this.messages.length) {
-				this.messages = this.messages.filter((message: IMessage, index: number) => index !== this.messages.length - 1);
-			}
-		}, 5000);
-	}
-
 	addMessage(message: { type: MessageType, message: string }): void {
 		this.messages = [
 			{
@@ -23,6 +15,12 @@ export class MessagesService {
 			},
 			...this.messages,
 		];
+
+		setTimeout(() => {
+			if (this.messages.length) {
+				this.messages = this.messages.filter((message: IMessage, index: number) => index !== this.messages.length - 1);
+			}
+		}, 5000);
 	}
 
 	closeMessage(id: number): void {
