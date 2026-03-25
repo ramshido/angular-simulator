@@ -8,17 +8,19 @@ export class MessagesService {
 	messages: IMessage[] = [];
 
 	addMessage(message: { type: MessageType, message: string }): void {
+    const newId: number = new Date().getTime();
+
 		this.messages = [
 			{
 				...message,
-				id: new Date().getTime(),
+				id: newId,
 			},
 			...this.messages,
 		];
 
 		setTimeout(() => {
 			if (this.messages.length) {
-				this.messages = this.messages.filter((message: IMessage, index: number) => index !== this.messages.length - 1);
+				this.closeMessage(newId);
 			}
 		}, 5000);
 	}

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { defer, from, Observable, of, share, shareReplay, Subject, Subscriber, tap } from 'rxjs';
 
 import './training';
 import './collection';
@@ -140,7 +141,7 @@ export class AppComponent {
 		});
 	}
 
-	closeMessage(id : number): void {
+	closeMessage(id: number): void {
 		this.messagesService.closeMessage(id);
 	}
 
@@ -154,7 +155,7 @@ export class AppComponent {
 
 		const date: Date = new Date();
 		this.localStorageService.setData<Date>(LAST_VISIT_KEY, date);
-		
+
 	}
 
 	private setVisitCount(): void {
@@ -167,4 +168,3 @@ export class AppComponent {
 	}
 
 }
-

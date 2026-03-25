@@ -23,8 +23,6 @@ function sum(a: number, b: number): number {
 	return a + b;
 }
 
-console.log(sum(5, 5));
-
 const formatText = (text: string, format: TextFormat): string => {
 	switch (format) {
 		case "uppercase":

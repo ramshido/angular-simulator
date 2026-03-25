@@ -211,7 +211,7 @@
 			<div class="travel-blog__cards-wrapper">
 				@for (item of toursBlog; track item.id) {
 					<a href="#" class="travel-blog__tour-card" id="travel-blog-card">
-						<img src="/images/travel-blog/{{ item.img }}.png" alt="{{ item.img }}" class="travel-blog__img">
+						<img [src]="`/images/travel-blog/${ item.img }.png`" alt="{{ item.img }}" class="travel-blog__img">
 						<div class="travel-blog__card-info">
 							<div class="travel-blog__card-upper-content">
 								<div class="travel-blog__card-title fw-800 fz-24px">{{ item.title }}</div>
@@ -238,12 +238,12 @@
 	</div>
 }
 
-<ng-template #messageWrapper let-title="title" let-subtitle="subtitle" let-id="id">
+<ng-template #messageWrapper let-title="title" let-messageText="messageText" let-id="id">
 	<div class="message">
 		<img src="/icons/svg/message/message-letter-icon.svg" alt="message-icon" class="message__letter-icon">
 		<div class="message__text-wrapper fz-16px white-clr">
 			<div class="message__title fw-800">{{ title }}</div>
-			<div class="message__descr fw-400">{{ subtitle }}</div>
+			<div class="message__descr fw-400">{{ messageText }}</div>
 		</div>
 		<button class="message__close-btn-wrapper" id="message-close-btn" (click)="closeMessage(id)">
 			<img src="/icons/svg/message/message-close-icon.svg" alt="message-close-icon" class="message__close-btn-icon">
@@ -260,7 +260,7 @@
 					context: {
 						id: item.id,
 						title: item.type, 
-						subtitle: item.message,
+						messageText: item.message,
 					}
 				"
 			></ng-container>	
