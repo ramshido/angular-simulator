@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header"> fz-14px
 	<div class="container">
 		<div class="header__nav">
 			<div class="logo__wrapper header__logo-wrapper">
@@ -201,7 +201,13 @@
 					</div>
 				}
 			</div>
-			<button class="popular-destinations__btn" id="popular-destinations-btn" (click)="addMessage(messageType.ERROR, 'Ошибка')">Рейтинг направлений</button>
+			<button 
+				class="popular-destinations__btn" 
+				id="popular-destinations-btn" 
+				(click)="addMessage(messageType.ERROR, 'Ошибка')"
+			>
+				Рейтинг направлений
+			</button>
 		</div>
 	</section>
 	<section class="travel-blog">
@@ -225,9 +231,73 @@
 					</a>
 				}
 			</div>
-			<button class="travel-blog__btn" id="travel-blog-btn" (click)="addMessage(messageType.INFO, 'Это сообщение из блога о турах')">Другие материалы</button>
+			<button 
+				class="travel-blog__btn" 
+				id="travel-blog-btn" 
+				(click)="addMessage(messageType.INFO, 'Это сообщение из блога о турах')"
+			>
+				Другие материалы
+			</button>
 		</div>
 	</section>
+	<section class="photo-report">
+		<div class="container">
+			<h3 class="photo-report__subtitle subtitle">фото-отчет</h3>
+			<h2 class="photo-report__title title">Делимся впечатлениями</h2>
+			<div class="photo-report__gallery-wrapper">
+				@for (item of photoReportGallery; track $index) {
+					<div class="photo-report__img-wrapper">
+						<img [src]="`/images/photo-report/${item}.jpg`" [alt]="item" class="photo-report__img">
+					</div>
+				}
+			</div>
+			<button 
+				class="photo-report__btn" 
+				id="photo-report-btn" 
+			>
+				Наш pinterest
+			</button>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="container">
+			<div class="mailing-list">
+				<div class="mailing-list__left-content">
+					<div class="mailing-list__subtitle subtitle">актуально</div>
+					<div class="mailing-list__title title">
+						Получайте полезные <br> рассылки о путешествиях
+					</div>
+				</div>
+				<div class="mailing-list__right-content">
+					<label for="mailing-list-email-input" class="mailing-list__label">Введите e-mail адрес</label>
+					<form class="mailing-list__form">
+						<input 
+							type="email"
+							placeholder="name@domain.com"
+							id="mailing-list-email-input"
+							name="mailing-list-email-input"
+							class="mailing-list__email-input"
+						>
+						<button 
+							class="mailing-list__btn" 
+							id="mailing-list-btn" 
+							type="button"
+						>
+							Подписаться на новости
+						</button>
+					</form>
+					<p class="personal-data-processing-policies fw-600 fz-14px">
+						подписываясь на новости, вы автоматически соглашаетесь с 
+						<span class="personal-data-processing-policies__underline"> условиями <br> обработки персональных данных </span> 
+						и <span class="personal-data-processing-policies__underline"> правилами рекламных рассылок </span>
+					</p>
+				</div>
+			</div>
+			<div class="footer-content__wrapper">
+
+			</div>
+		</div>
+	</footer>
 </main>
 
 @if (isLoading) {

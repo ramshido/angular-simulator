@@ -21,8 +21,6 @@ import { LocalStorageService } from './services/local-storage.service';
 })
 export class AppComponent {
 
-	companyNmae: string = 'рутимбет';
-
 	advantagesInfo: IAdvantage[] = [
 		{
 			id: 1,
@@ -105,6 +103,16 @@ export class AppComponent {
 		}
 	];
 
+	photoReportGallery: string[] = [
+		'picture-on-background-balloons',
+		'new-travel-items-on-map',
+		'dubai-sail',
+		'island-beach',
+		'desert-canyon',
+		'old-travel-items-on-map',
+	];
+
+  companyNmae: string = 'рутимбет';
 	selectedItemId: number = 0;
 	status: string = '';
 	tourLocation: string = '';
