@@ -7,12 +7,33 @@ export class MessagesService {
 
 	messages: IMessage[] = [];
 
-	addMessage(message: { type: MessageType, message: string }): void {
+	showWarn(message: string): void {
+		this.addMessage(MessageType.WARN, message);
+	}
+
+	showError(message: string): void {
+		this.addMessage(MessageType.ERROR, message);
+	}
+
+	showSuccess(message: string): void {
+		this.addMessage(MessageType.SUCCESS, message);
+	}
+
+	showInfo(message: string): void {
+		this.addMessage(MessageType.INFO, message);
+	}
+
+	closeMessage(id: number): void {
+		this.messages = this.messages.filter((message: IMessage) => id !== message.id);
+	}
+
+	private addMessage(type: MessageType, message: string ): void {
     const newId: number = new Date().getTime();
 
 		this.messages = [
 			{
-				...message,
+				type,
+				message,
 				id: newId,
 			},
 			...this.messages,
@@ -23,10 +44,6 @@ export class MessagesService {
 				this.closeMessage(newId);
 			}
 		}, 5000);
-	}
-
-	closeMessage(id: number): void {
-		this.messages = this.messages.filter((message: IMessage) => id !== message.id);
 	}
 
 }

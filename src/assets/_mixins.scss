@@ -1,0 +1,9 @@
+@mixin btn($width, $height, $text-color: var(--white-color), $bg-color: var(--secondary-greenish-color)) {
+	width: $width;
+	height: $height;
+	background-color: $bg-color;
+	color: $text-color;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 600;
+}

@@ -1,0 +1,146 @@
+@use '../../assets/mixins';
+
+.mailing-list {
+	padding: 40px 100px 40px;
+	min-height: 196px;
+	min-width: 1180px;
+
+	border-radius: 6px;
+	box-shadow: 0px 0px 15px 0px rgba(24, 18, 30, 0.12);
+	background: rgba(253, 253, 253, 1);
+
+	position: absolute;
+	top: -94px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	&__left-content {
+		margin-right: auto;
+	}
+
+	&__subtitle {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	&__title {
+		font-size: 26px;
+	}
+
+	display: flex;
+	margin-bottom: 10px;
+
+	&__label {
+		display: block;
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+
+	&__email-input {
+		width: 280px;
+		height: 44px;
+		padding: 0 16px;
+		border-radius: 4px;
+		background: rgba(243, 245, 244, 1);
+
+		margin-right: 16px;
+	}
+
+	&__btn {
+		@include mixins.btn(244px, 52px);
+	}
+}
+
+.footer {
+	background-color: var(--secondary-greenish-color);
+	padding: 180px 0 80px;
+	position: relative;
+
+	&-content__wrapper {
+		color: white;
+		display: flex;
+		justify-content: space-between;
+		column-gap: 20px;
+	}
+
+	&-title {
+		font-size: 20px;
+		font-weight: 700;
+		color: var(--white-color);
+		margin-bottom: 20px;
+	}
+
+	&__company-sources-info {
+		flex-basis: 480px;
+	}
+
+	&__company-name {
+		margin-bottom: 17px;
+	}
+
+	&__company-description {
+		padding-right: 24px;
+		margin-bottom: 80px;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 20px;
+	}
+
+	&__communication-wrapper {
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 18px;
+		text-decoration: underline;
+		margin-bottom: 32px;
+	}
+
+	&__communication-email {
+		margin-right: 24px;
+	}
+
+	&__social-network-link {
+		margin-right: 16px;
+	}
+
+	&__our-services-wrapper {
+		flex-basis: 280px;
+	}
+
+	&__list-item {
+		line-height: 18px;
+		margin-bottom: 16px;
+		position: relative;
+		cursor: pointer;
+
+		&::before {
+			content: '>';
+			display: inline-block;
+			margin-right: 10px;
+			font-weight: bold;
+		}
+	}
+
+	&__traveling-wrapper {
+		flex-basis: 280px;
+	}
+}
+
+.personal-data-processing-policies {
+	line-height: 18px;
+}
+
+.footer-privacy-policy {
+	padding: 24px 0 24px;
+	background-color: var(--black-color);
+	color: var(--white-color);
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
+
+}

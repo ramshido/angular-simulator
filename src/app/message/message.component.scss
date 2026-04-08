@@ -1,0 +1,51 @@
+.message {
+	width: 350px;
+	height: 70px; // + 80px
+	background-color: #0F172AD9;
+	border-radius: 10px;
+	border: 1px solid white;
+	padding: 15px 27px 15px 15px;
+	margin-bottom: 10px;
+
+	display: flex;
+	transition: all .5s ease;
+	position: relative;
+
+	&__block-wrapper {
+		position: fixed;
+		top: 100px;
+		right: 60px;
+	}
+
+	&__letter-icon {
+		margin-right: 15px;
+		width: 40px;
+		height: 40px;
+	}
+
+	&__text-wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__title {
+		margin-bottom: 5px;
+	}
+
+	&__close-btn-wrapper {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 7px;
+		right: 7px;
+		background-color: inherit;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	&__close-btn-icon {
+		width: 100%;
+	}
+}
