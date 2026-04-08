@@ -1,4 +1,4 @@
-<header class="header"> fz-14px
+<header class="header"> 
 	<div class="container">
 		<div class="header__nav">
 			<div class="logo__wrapper header__logo-wrapper">
@@ -6,12 +6,12 @@
 				<span class="logo__company-name fw-400 fz-18px white-clr">{{ companyNmae }}</span>
 			</div>
 			<nav class="header__nav-links fz-18px fw-600 white-clr">
-				<a class="header__nav-link" id="main-page-move-link">Главная</a>
-				<a class="header__nav-link" id="about-guide-move-link">Про гида</a>
-				<a class="header__nav-link" id="tour-program-move-link">Программа тура</a>
-				<a class="header__nav-link" id="about-cost-move-link">Стоимость</a>
-				<a class="header__nav-link" id="blog-move-link">Блог</a>
-				<a class="header__nav-link" id="contacts-move-link">Контакты</a>
+				<a href="#" class="header__nav-link" id="main-page-move-link">Главная</a>
+				<a href="#" class="header__nav-link" id="about-guide-move-link">Про гида</a>
+				<a href="#" class="header__nav-link" id="tour-program-move-link">Программа тура</a>
+				<a href="#" class="header__nav-link" id="about-cost-move-link">Стоимость</a>
+				<a href="#" class="header__nav-link" id="blog-move-link">Блог</a>
+				<a href="#" class="header__nav-link" id="contacts-move-link">Контакты</a>
 			</nav>
 			<button class="header__btn" id="consultation-order-btn">Консультация</button>
 			<div class="clicker-date__wrapper">
@@ -152,17 +152,17 @@
 					</div>
 
 					<ul class="advantages__advantages-list">
-						@for (item of advantagesInfo; track item.id) {
+						@for (advantage of advantagesInfo; track advantage.id) {
 							<li class="advantages__advantage-item">
 								<img 
-									src="/icons/svg/{{ item.icon }}.svg" 
+									src="/icons/svg/{{ advantage.icon }}.svg" 
 									alt="bookmark-yellow-icon"
 									class="advantages__advantage-item-img"
 								>
 								<div class="advantages__advantage-item-descr">
-									<span class="advantages__advantage-item-title fz-18px fw-800">{{ item.title }}</span>
+									<span class="advantages__advantage-item-title fz-18px fw-800">{{ advantage.title }}</span>
 									<p class="advantages__advantage-item-paragraph fz-14px fw-400">
-										{{ item.descr }}
+										{{ advantage.descr }}
 									</p>
 								</div>
 							</li>
@@ -185,17 +185,17 @@
 			<h3 class="popular-destinations__subtitle subtitle">по версии отдыхающих</h3>
 			<h2 class="popular-destinations__title title">Популярные направления</h2>
 			<div class="popular-destinations__tours-wrapper">
-				@for (item of popularDestinations; track item.id) {
+				@for (destinations of popularDestinations; track destinations.id) {
 					<div class="popular-destinations__tour-card" id="popular-destinations-card">
-						<img src="/images/popular-destinations/{{ item.img }}.png" alt="{{ item.img }}" class="popular-destinations__img">
-						<span class="popular-destinations__reviews-evaluation fw-600 fz-14px">{{ item.reviewsEvaluation }}</span>
+						<img src="/images/popular-destinations/{{ destinations.img }}.png" alt="{{ destinations.img }}" class="popular-destinations__img">
+						<span class="popular-destinations__reviews-evaluation fw-600 fz-14px">{{ destinations.reviewsEvaluation }}</span>
 						<div class="popular-destinations__info-wrapper">
 							<div class="popular-destinations__info white-clr">
 								<div class="popular-destinations__info-descr">
-									<h2 class="popular-destinations__info-title fz-24px fw-600">{{ item.title }}</h2>
-									<h3 class="popular-destinations__info-subtitle fw-400 fz-14px">{{ item.subtitle }}</h3>
+									<h2 class="popular-destinations__info-title fz-24px fw-600">{{ destinations.title }}</h2>
+									<h3 class="popular-destinations__info-subtitle fw-400 fz-14px">{{ destinations.subtitle }}</h3>
 								</div>
-								<span class="popular-destinations__price fw-800">{{ item.price }} &#36;</span>
+								<span class="popular-destinations__price fw-800">{{ destinations.price }} &#36;</span>
 							</div>
 						</div>
 					</div>
@@ -215,16 +215,16 @@
 			<h3 class="travel-blog__subtitle subtitle">делимся впечатлениями</h3>
 			<h2 class="travel-blog__title title">Блог о путешествиях</h2>
 			<div class="travel-blog__cards-wrapper">
-				@for (item of toursBlog; track item.id) {
+				@for (blog of toursBlog; track blog.id) {
 					<a href="#" class="travel-blog__tour-card" id="travel-blog-card">
-						<img [src]="`/images/travel-blog/${ item.img }.png`" alt="{{ item.img }}" class="travel-blog__img">
+						<img [src]="`/images/travel-blog/${ blog.img }.png`" alt="{{ blog.img }}" class="travel-blog__img">
 						<div class="travel-blog__card-info">
 							<div class="travel-blog__card-upper-content">
-								<div class="travel-blog__card-title fw-800 fz-24px">{{ item.title }}</div>
-								<div class="travel-blog__card-descr fw-400 fz-14px">{{ item.descr }}</div>
+								<div class="travel-blog__card-title fw-800 fz-24px">{{ blog.title }}</div>
+								<div class="travel-blog__card-descr fw-400 fz-14px">{{ blog.descr }}</div>
 							</div>
 							<div class="travel-blog__card-down-content">
-								<span class="travel-blog__date fw-800 fz-14px yellow-clr">{{ item.date }}</span>
+								<span class="travel-blog__date fw-800 fz-14px yellow-clr">{{ blog.date }}</span>
 								<span class="travel-blog__read-article fw-600 fz-14px">читать статью</span>
 							</div>
 						</div>
@@ -245,9 +245,9 @@
 			<h3 class="photo-report__subtitle subtitle">фото-отчет</h3>
 			<h2 class="photo-report__title title">Делимся впечатлениями</h2>
 			<div class="photo-report__gallery-wrapper">
-				@for (item of photoReportGallery; track $index) {
+				@for (photo of photoReportGallery; track $index) {
 					<div class="photo-report__img-wrapper">
-						<img [src]="`/images/photo-report/${item}.jpg`" [alt]="item" class="photo-report__img">
+						<img [src]="`/images/photo-report/${photo}.jpg`" [alt]="photo" class="photo-report__img">
 					</div>
 				}
 			</div>
@@ -288,16 +288,63 @@
 					</form>
 					<p class="personal-data-processing-policies fw-600 fz-14px">
 						подписываясь на новости, вы автоматически соглашаетесь с 
-						<span class="personal-data-processing-policies__underline"> условиями <br> обработки персональных данных </span> 
-						и <span class="personal-data-processing-policies__underline"> правилами рекламных рассылок </span>
+						<a href="#" class="personal-data-processing-policies__underline" id="personal-data-processing-policies"> условиями <br> обработки персональных данных </a> 
+						и <a href="#" class="personal-data-processing-policies__underline" id="rules-for-advertising-newsletters"> правилами рекламных рассылок </a>
 					</p>
 				</div>
 			</div>
 			<div class="footer-content__wrapper">
-
+				<div class="footer__company-sources-info">
+					<h2 class="footer-title">
+						Компания <span class="upper-case-style">«{{ companyNmae }}»</span>
+					</h2>
+					<div class="footer__company-description">
+						Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад.
+						Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
+					</div>
+					<div class="footer__communication-wrapper">
+						<a href="mailto:info@domain.com" class="footer__communication-email" id="communication-email">info@domain.com</a>
+						<a href="tel:+71234567890" class="footer__communication-number" id="communication-number">+7 (123) 456-78-90</a>
+					</div>
+					<div class="footer__social-networks-wrapper">
+						<a href="#" class="footer__social-network-link" id="company-tg">
+							<img src="/icons/svg/footer/tg-icon.svg" alt="tg-social-network">
+						</a>
+						<a href="#" class="footer__social-network-link" id="company-vk">
+							<img src="/icons/svg/footer/vk-icon.svg" alt="tg-social-network">
+						</a>
+						<a href="#" class="footer__social-network-link" id="company-pinterest">
+							<img src="/icons/svg/footer/pinterest-icon.svg" alt="tg-social-network">
+						</a>
+						<a href="#" class="footer__social-network-link" id="company-skype">
+							<img src="/icons/svg/footer/skype-icon.svg" alt="tg-social-network">
+						</a>
+					</div>
+				</div>
+				<div class="footer__our-services-wrapper">
+					<h2 class="footer-title">Наши услуги</h2>
+					<ul class="footer__our-services-list">
+						<li class="footer__list-item" id="our-service-list-item">Прогулки в горы летом</li>
+						<li class="footer__list-item" id="our-service-list-item">Зимние походы в горы</li>
+						<li class="footer__list-item" id="our-service-list-item">Посещение храмов в горах</li>
+						<li class="footer__list-item" id="our-service-list-item">Экстремальные виды туризма</li>
+						<li class="footer__list-item" id="our-service-list-item">Походы в джунглях Амазонии</li>
+						<li class="footer__list-item" id="our-service-list-item">Поездка в Африку</li>
+					</ul>
+				</div>
+				<div class="footer__traveling-wrapper">
+					<div class="footer__traveling footer-title">Важно для путешествий</div>
+					<ul class="footer__traveling-list">
+						<li class="footer__list-item">Как собрать в долгий поход?</li>
+						<li class="footer__list-item">Жизненно важные предметы для похода</li>
+						<li class="footer__list-item">Медицинская страховка, гарантии безопасности</li>
+						<li class="footer__list-item">Если вы врач - загляните сюда</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</footer>
+	<div class="footer-privacy-policy"></div>
 </main>
 
 @if (isLoading) {
