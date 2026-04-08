@@ -288,8 +288,8 @@
 					</form>
 					<p class="personal-data-processing-policies fw-600 fz-14px">
 						подписываясь на новости, вы автоматически соглашаетесь с 
-						<a href="#" class="personal-data-processing-policies__underline" id="personal-data-processing-policies"> условиями <br> обработки персональных данных </a> 
-						и <a href="#" class="personal-data-processing-policies__underline" id="rules-for-advertising-newsletters"> правилами рекламных рассылок </a>
+						<a href="#" class="text-link" id="personal-data-processing-policies"> условиями <br> обработки персональных данных </a> 
+						и <a href="#" class="text-link" id="rules-for-advertising-newsletters"> правилами рекламных рассылок </a>
 					</p>
 				</div>
 			</div>
@@ -344,7 +344,14 @@
 			</div>
 		</div>
 	</footer>
-	<div class="footer-privacy-policy"></div>
+	<div class="footer-privacy-policy">
+		<div class="container">
+			<div class="footer-privacy-policy__wrapper">
+				<div class="footer-privacy-policy__company-info">ИП Константинопольский К.К., 2023</div>
+				<a href="#" class="footer-privacy-policy__processing text-link" id="footer-privacy-policy">Политика обработки персональных данных</a>
+			</div>
+		</div>
+	</div>
 </main>
 
 @if (isLoading) {
