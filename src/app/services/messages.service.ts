@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { IMessage } from "../interfaces/IMessage";
 import { MessageType } from "../enums/MessageType";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class MessagesService {
 
-	messages: IMessage[] = [];
+	private messagesSubject$: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
+	messages$: Observable<IMessage[]> = this.messagesSubject$.asObservable();
 
 	showWarn(message: string): void {
 		this.addMessage(MessageType.WARN, message);
@@ -24,23 +26,25 @@ export class MessagesService {
 	}
 
 	closeMessage(id: number): void {
-		this.messages = this.messages.filter((message: IMessage) => id !== message.id);
+		this.messagesSubject$.next(
+			this.messagesSubject$.value.filter((message: IMessage) => message.id !== id)
+		);
 	}
 
-	private addMessage(type: MessageType, message: string ): void {
-    const newId: number = new Date().getTime();
+	private addMessage(type: MessageType, message: string): void {
+		const newId: number = new Date().getTime();
 
-		this.messages = [
+		this.messagesSubject$.next([
 			{
 				type,
 				message,
 				id: newId,
 			},
-			...this.messages,
-		];
+			...this.messagesSubject$.value,
+		]);
 
 		setTimeout(() => {
-			if (this.messages.length) {
+			if (this.messagesSubject$.value.length) {
 				this.closeMessage(newId);
 			}
 		}, 5000);

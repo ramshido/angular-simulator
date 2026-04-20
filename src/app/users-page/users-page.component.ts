@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MessagesService } from '../services/messages.service';
 
 @Component({
   selector: 'app-users-page',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class UsersPageComponent {
 
+	private usersService: MessagesService = inject(MessagesService);
+
+	constructor() {
+
+	}
+	
 }

@@ -7,5 +7,4 @@ export const routes: Routes = [
 	{ path: '', component: HomePageComponent },
 	{ path: 'users', component: UsersPageComponent },
 	{ path: '**', component: NotFoundPageComponent },
-
 ];

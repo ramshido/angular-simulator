@@ -11,16 +11,16 @@
 	</div>
 </ng-template>
 
-@if (this.messagesService.messages.length) {
+@if ((this.messages$ | async)) {
 	<div class="message__block-wrapper">
-		@for (item of messagesService.messages; track item.id) {
+		@for (message of messages$ | async; track message.id) {
 			<ng-container 
 				*ngTemplateOutlet="
 					messageWrapper; 
 					context: {
-						id: item.id,
-						title: item.type, 
-						messageText: item.message,
+						id: message.id,
+						title: message.type, 
+						messageText: message.message,
 					}
 				"
 			></ng-container>	

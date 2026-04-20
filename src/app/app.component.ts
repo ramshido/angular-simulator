@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { defer, from, Observable, of, share, shareReplay, Subject, Subscriber, tap } from 'rxjs';
+import { concatMap, defer, exhaustMap, from, interval, mergeMap, Observable, of, share, shareReplay, Subject, Subscriber, switchMap, tap, timer } from 'rxjs';
 
 import './training';
 import './collection';
@@ -9,28 +9,27 @@ import { LocalStorageService } from './services/local-storage.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from "./message/message.component";
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './services/loader.service';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet, HeaderComponent, FooterComponent, MessageComponent],
+	imports: [RouterOutlet, HeaderComponent, FooterComponent, MessageComponent, LoaderComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
 export class AppComponent {
 
+	private localStorageService: LocalStorageService = inject(LocalStorageService);
+	private loaderService: LoaderService = inject(LoaderService);
+
 	selectedItemId: number = 0;
 	status: string = '';
-	isLoading: boolean = true;
-	
-	localStorageService: LocalStorageService = inject(LocalStorageService);
 	
 	constructor() {
 		this.setLastVisitDate();
 		this.setVisitCount();
-
-		setTimeout(() => {
-			this.isLoading = false;
-		}, 2000);
+		this.loaderService.showLoader();
 	}
 
 	private isMainColor(): boolean {
