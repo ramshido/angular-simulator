@@ -3,13 +3,14 @@ import { MessageService } from '../services/message.service';
 import { UserService } from '../services/user.service';
 import { catchError, finalize, Observable, of, tap } from 'rxjs';
 import { IUser } from '../interfaces/IUser';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LoaderService } from '../services/loader.service';
+import { UserCardComponent } from '../user-card/user-card.component';
 
 @Component({
 	selector: 'app-users-page',
-	imports: [AsyncPipe],
+	imports: [AsyncPipe, UserCardComponent, NgTemplateOutlet],
 	templateUrl: './users-page.component.html',
 	styleUrl: './users-page.component.scss',
 })
@@ -26,8 +27,8 @@ export class UsersPageComponent {
 		this.userService.loadUsers()
 			.pipe(
 				tap((users: IUser[]) => {
-					this.loaderService.showLoader()
-					this.userService.setUsers(users)
+					this.loaderService.showLoader();
+					this.userService.setUsers(users);
 				}),
 				catchError((error: unknown) => {
 					this.messageService.showError('Ошибка при загрузке пользователей');
@@ -37,7 +38,7 @@ export class UsersPageComponent {
 				finalize(() => this.loaderService.hideLoader()),
 				takeUntilDestroyed(this.destroyRef)
 			)
-			.subscribe()
+			.subscribe();
 	}
 
 }
