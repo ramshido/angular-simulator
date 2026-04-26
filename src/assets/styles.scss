@@ -16,6 +16,7 @@
 	--section-bg-white-color: rgba(243, 245, 244, 1);
 	--secondary-greenish-color: #1A3E3E;
 	--secondary-yellow-color: rgba(242, 190, 34, 1);
+	--gold-text: rgba(212, 163, 115, 1);
 }
 
 .white-clr {
@@ -36,6 +37,10 @@
 
 .yellow-clr {
 	color: var(--secondary-yellow-color);
+}
+
+.gold-text {
+	color: var(--gold-text);
 }
 
 .fw-400 {

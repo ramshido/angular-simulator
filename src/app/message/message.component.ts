@@ -1,5 +1,5 @@
 import { Component, inject } from "@angular/core";
-import { MessagesService } from "../services/messages.service";
+import { MessageService } from "../services/message.service";
 import { MessageType } from "../enums/MessageType";
 import { AsyncPipe, NgTemplateOutlet } from "@angular/common";
 import { Observable } from "rxjs";
@@ -14,13 +14,13 @@ import { IMessage } from "../interfaces/IMessage";
 })
 export class MessageComponent {
 
-	messagesService: MessagesService = inject(MessagesService);
+	messageService: MessageService = inject(MessageService);
 
-	messages$: Observable<IMessage[]> = this.messagesService.messages$;
+	messages$: Observable<IMessage[]> = this.messageService.messages$;
 	messageType: typeof MessageType = MessageType;
 
 	closeMessage(id: number): void {
-		this.messagesService.closeMessage(id);
+		this.messageService.closeMessage(id);
 	}
 
 }

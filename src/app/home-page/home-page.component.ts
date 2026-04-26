@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import { IAdvantage } from '../interfaces/IAdvantage';
 import { IPopularDestination } from '../interfaces/IPopularDestination';
-import { MessagesService } from '../services/messages.service';
+import { MessageService } from '../services/message.service';
 import { MessageType } from '../enums/MessageType';
 import { ITourBlog } from '../interfaces/ITourBlog';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomePageComponent {
 
-	messagesService: MessagesService = inject(MessagesService);
+	messageService: MessageService = inject(MessageService);
 	messageType: typeof MessageType = MessageType;
 
 	advantagesInfo: IAdvantage[] = [

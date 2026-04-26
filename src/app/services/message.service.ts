@@ -4,7 +4,7 @@ import { MessageType } from "../enums/MessageType";
 import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
-export class MessagesService {
+export class MessageService {
 
 	private messagesSubject$: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
 	messages$: Observable<IMessage[]> = this.messagesSubject$.asObservable();

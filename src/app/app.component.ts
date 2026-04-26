@@ -32,6 +32,10 @@ export class AppComponent {
 		this.loaderService.showLoader();
 	}
 
+	sayHello(name: string): void {
+		console.log(name);
+	}
+
 	private isMainColor(): boolean {
 		const mainColors: string[] = [Color.RED, Color.BLUE, Color.GREEN];
 		return mainColors.includes(Color.PURPLE);

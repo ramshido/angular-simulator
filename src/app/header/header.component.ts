@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { INavigation } from '../interfaces/INavigation';
 import { RouterLink, RouterLinkActive } from "@angular/router";
@@ -10,6 +10,9 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+
+		@Input() name!: string;
+		@Output() clickMe: EventEmitter<string> = new EventEmitter<string>();
 
 	companyNmae: string = 'рутимбет';
 	isClicker: boolean = false;
@@ -27,6 +30,8 @@ export class HeaderComponent {
 		setInterval(() => {
 			this.dateToday = new Date().toLocaleString();
 		}, 1000);
+
+		this.clickMe.emit('hello work')
 	}
 
 	onSubmit(): void {
