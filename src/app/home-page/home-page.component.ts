@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
 	selector: 'app-home-page',
+	standalone: true,
 	imports: [FormsModule],
 	templateUrl: './home-page.component.html',
 	styleUrl: './home-page.component.scss',

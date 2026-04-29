@@ -14,6 +14,7 @@ import { LoaderService } from './services/loader.service';
 
 @Component({
 	selector: 'app-root',
+	standalone: true,
 	imports: [RouterOutlet, HeaderComponent, FooterComponent, MessageComponent, LoaderComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',

@@ -25,4 +25,10 @@ export class UserService {
 		return this.userApiService.getUsers();
 	}
 
+	deleteUser(id: number): void {
+		this.usersSubject.next( 
+			this.usersSubject.value.filter((user: IUser) => user.id !== id)
+		);
+	}
+
 }

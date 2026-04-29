@@ -1,0 +1,28 @@
+<div class="form-wrapper">
+	<form class="user-form" id="user-from" [formGroup]="form">
+		<input id="user-form-name" type="text" class="user-form__input" placeholder="Name" formControlName="name">
+		<input id="user-form-user-name" type="text" class="user-form__input" placeholder="User name" formControlName="username">
+		<input id="user-form-email" type="email" class="user-form__input" placeholder="Email" formControlName="email">
+		<input id="user-form-phone" type="number" class="user-form__input" placeholder="Phone" formControlName="phone">
+		<input id="user-form-website" type="text" class="user-form__input" placeholder="Website" formControlName="website">
+		<ng-container formGroupName="address">
+			<input id="user-form-address-city" type="text" class="user-form__input" placeholder="Address city" formControlName="city">
+			<input id="user-form-address-street" type="text" class="user-form__input" placeholder="Address street" formControlName="street">
+			<input id="user-form-address-suite" type="text" class="user-form__input" placeholder="Address suite" formControlName="suite">
+			<input id="user-form-address-zipcode" type="number" class="user-form__input" placeholder="Address zipcode" formControlName="zipcode">
+			<ng-container formGroupName="geo">
+				<input id="user-form-address-geo-lat" type="number" class="user-form__input" placeholder="Address geo lat" formControlName="lat">
+				<input id="user-form-address-geo-lng" type="number" class="user-form__input" placeholder="Address geo lng" formControlName="lng">
+			</ng-container>
+		</ng-container>
+		<ng-container formGroupName="company">
+			<input id="user-form-company-name" type="text" class="user-form__input" placeholder="Company name" formControlName="name">
+			<input id="user-form-company-catch-phrase" type="text" class="user-form__input" placeholder="Company catch phrase" formControlName="catchPhrase">
+			<input id="user-form-company-bs" type="text" class="user-form__input" placeholder="Company bs" formControlName="bs">
+		</ng-container>
+	</form>
+	<div class="user-form-btns">
+		<button class="user-form-btn" id="create-user-btn" type="button" (click)="onCreateUser()" [disabled]="form.invalid">Create User</button>
+		<button class="user-form-btn" id="reset-user-form-btn" type="button" (click)="form.reset()">Reset Form</button>
+	</div>
+</div>

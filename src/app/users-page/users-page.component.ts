@@ -1,23 +1,25 @@
-import { Component, DestroyRef, inject, Input } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { MessageService } from '../services/message.service';
 import { UserService } from '../services/user.service';
 import { catchError, finalize, Observable, of, tap } from 'rxjs';
 import { IUser } from '../interfaces/IUser';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LoaderService } from '../services/loader.service';
 import { UserCardComponent } from '../user-card/user-card.component';
+import { UserCreateComponent } from "../user-create/user-create.component";
 
 @Component({
 	selector: 'app-users-page',
-	imports: [AsyncPipe, UserCardComponent, NgTemplateOutlet],
+	standalone: true,
+	imports: [AsyncPipe, UserCardComponent, UserCreateComponent],
 	templateUrl: './users-page.component.html',
 	styleUrl: './users-page.component.scss',
 })
 export class UsersPageComponent {
 
 	private destroyRef: DestroyRef = inject(DestroyRef);
-	private messageService = inject(MessageService);
+	private messageService: MessageService = inject(MessageService);
 	private loaderService: LoaderService = inject(LoaderService);
 
 	private userService: UserService = inject(UserService);
@@ -39,6 +41,14 @@ export class UsersPageComponent {
 				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
+	}
+
+	onDeleteUser(id: number): void {
+		this.userService.deleteUser(id);
+	}
+
+	onCreateUser(): void {
+		console.log('created user');
 	}
 
 }

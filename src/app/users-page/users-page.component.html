@@ -3,29 +3,20 @@
 	<div class="container">
 		<h1 class="users-page__title">Список Пользователей</h1>
 
+		<app-user-create (createUser)="onCreateUser()" class="create-user-form"></app-user-create>
 		<div class="users-page__cards-container">
 			@let users = (users$ | async);
 			@if (users?.length) {
 				@for (user of users; track user.id) {
-					<app-user-card [user]="user"></app-user-card>
+					<app-user-card [user]="user" (deleteUser)="onDeleteUser($event)"></app-user-card>
 				}
 			} @else {
-				<ng-container 
-					*ngTemplateOutlet="
-						usersErrorMessage; 
-						context: { message: 'Нет пользователей для отображения' }
-					"
-				>
-				</ng-container>
+				<div class="users-page__not-have-users-container">
+					<h2 class="users-page__not-have-users-title">Нет пользователей для отображения</h2>
+				</div>
 			}
 		</div>
 	</div>
 </div>
-
-<ng-template #usersErrorMessage let-errorMessage="message">
-	<div class="users-page__not-have-users-container">
-		<h2 class="users-page__not-have-users-title">{{ errorMessage }}</h2>
-	</div>
-</ng-template>
 
 

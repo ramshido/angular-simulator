@@ -67,4 +67,13 @@
 			<p class="user-card__block-data-content fw-800">{{ user.company.bs }}</p>
 		</div>
 	</div>
+
+	<button
+	  class="user-card__delete-btn"
+		id="card-delete-btn"
+		type="button"
+		(click)="onDeleteCard(user.id)"
+	>
+	  Delete user
+	</button>
 </div>
