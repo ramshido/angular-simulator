@@ -1,28 +1,28 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators, NonNullableFormBuilder } from '@angular/forms';
 import { IUser } from '../interfaces/IUser';
 
 interface IUserForm {
-	id: FormControl<number | null>;
-	name: FormControl<string | null>;
-	username: FormControl<string | null>;
-	email: FormControl<string | null>;
+	id: FormControl<number>;
+	name: FormControl<string>;
+	username: FormControl<string>;
+	email: FormControl<string>;
 	address: FormGroup<{
-		street: FormControl<string | null>;
-		suite: FormControl<string | null>;
-		city: FormControl<string | null>;
-		zipcode: FormControl<number | null>;
+		street: FormControl<string>;
+		suite: FormControl<string>;
+		city: FormControl<string>;
+		zipcode: FormControl<number>;
 		geo: FormGroup<{
-			lat: FormControl<number | null>;
-			lng: FormControl<number | null>;
+			lat: FormControl<number>;
+			lng: FormControl<number>;
 		}>;
 	}>;
-	phone: FormControl<number | null>;
-	website: FormControl<string | null>;
+	phone: FormControl<number>;
+	website: FormControl<string>;
 	company: FormGroup<{
-		name: FormControl<string | null>;
-		catchPhrase: FormControl<string | null>;
-		bs: FormControl<string | null>;
+		name: FormControl<string>;
+		catchPhrase: FormControl<string>;
+		bs: FormControl<string>;
 	}>;
 }
 @Component({
@@ -36,32 +36,35 @@ export class UserCreateComponent {
 
 	@Output() createUser: EventEmitter<IUser> = new EventEmitter<IUser>;
 
-	form: FormGroup<IUserForm> = new FormGroup({
-		id: new FormControl(Date.now()),
-		name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
-		username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-		email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(100)]),
-		address: new FormGroup({
-			street: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-			suite: new FormControl('', [Validators.maxLength(50)]),
-			city: new FormControl(''),
-			zipcode: new FormControl(0, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]),
-			geo: new FormGroup({
-				lat: new FormControl(0),
-				lng: new FormControl(0),
+	fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
+
+	form: FormGroup<IUserForm> = this.fb.group({
+		id: this.fb.control(Date.now()),
+		name: this.fb.control('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+		username: this.fb.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+		email: this.fb.control('', [Validators.required, Validators.email, Validators.maxLength(100)]),
+		address: this.fb.group({
+			street: this.fb.control('', [Validators.required, Validators.maxLength(100)]),
+			suite: this.fb.control('', [Validators.maxLength(50)]),
+			city: this.fb.control('', [Validators.required, Validators.maxLength(50)]),
+			zipcode: this.fb.control(0, [Validators.required, Validators.min(5), Validators.maxLength(10)]),
+			geo: this.fb.group({
+				lat: this.fb.control(0, [Validators.required, Validators.min(10)]),
+				lng: this.fb.control(0, [Validators.required, Validators.min(10)]),
 			}),
 		}),
-		phone: new FormControl(),
-		website: new FormControl(''),
-		company: new FormGroup({
-			name: new FormControl(''),
-			catchPhrase: new FormControl(''),
-			bs: new FormControl(''),
+		phone: this.fb.control(0),
+		website: this.fb.control('', [Validators.maxLength(100)]),
+		company: this.fb.group({
+			name: this.fb.control('', [Validators.required, Validators.maxLength(50)]),
+			catchPhrase: this.fb.control('', [ Validators.maxLength(200)]),
+			bs: this.fb.control('', [ Validators.maxLength(100)]),
 		}),
 	});
 
 	onCreateUser(): void {
 		this.createUser.emit(this.form.getRawValue());
+		this.form.reset();
 	}
 
 }
