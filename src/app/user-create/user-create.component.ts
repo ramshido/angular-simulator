@@ -3,7 +3,6 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators, NonNullableFor
 import { IUser } from '../interfaces/IUser';
 
 interface IUserForm {
-	id: FormControl<number>;
 	name: FormControl<string>;
 	username: FormControl<string>;
 	email: FormControl<string>;
@@ -39,7 +38,6 @@ export class UserCreateComponent {
 	fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
 	form: FormGroup<IUserForm> = this.fb.group({
-		id: this.fb.control(Date.now()),
 		name: this.fb.control('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
 		username: this.fb.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
 		email: this.fb.control('', [Validators.required, Validators.email, Validators.maxLength(100)]),
@@ -63,7 +61,7 @@ export class UserCreateComponent {
 	});
 
 	onCreateUser(): void {
-		this.createUser.emit(this.form.getRawValue());
+		this.createUser.emit( {...this.form.getRawValue(), id: Date.now()} );
 		this.form.reset();
 	}
 

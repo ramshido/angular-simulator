@@ -4,7 +4,7 @@
 		<h1 class="users-page__title">Список Пользователей</h1>
 
 		<app-user-create (createUser)="onCreateUser($event)" class="create-user-form"></app-user-create>
-		<app-users-filter class="users-filter-container" [nameControl]="searchControl"></app-users-filter>
+		<app-users-filter class="users-filter-container" (submitName)="this.search$.next($event)"></app-users-filter>
 		<div class="users-page__cards-container">
 			@let users = (filteredUsers$ | async);
 			@if (users?.length) {
