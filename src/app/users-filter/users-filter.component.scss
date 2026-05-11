@@ -1,0 +1,25 @@
+.users-filter {
+	&__wrapper {
+		padding: 15px;
+		width: 300px;
+
+		display: flex;
+		align-items: center;
+		background-color: #ffffff;
+		box-shadow: 5px 5px 10px rgba(207, 207, 207, 0.733);
+		border-radius: 5px;
+	}
+
+	&__label {
+		margin-right: 20px;
+		font-weight: 600;
+	}
+
+	&__input {
+		width: 60%;
+		border-bottom: 2px solid rgb(177, 185, 65);
+		background-color: #f1f1f1;
+		padding: 5px;
+		border-radius: 5px;
+	}
+}

@@ -1,0 +1,79 @@
+<div class="user-card__wrapper">
+	<div class="user-card__title">{{ user.name }}</div>
+	<div class="user-card__user-name">{{ user.username }}</div>
+
+	<div class="user-card__block">
+		<div class="user-card__block-title-wrapper">
+			<span class="user-card__block-title">Контакты</span>
+			<span class="user-card__block-limiter"></span>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Эл.почта:</p>
+			<p class="user-card__block-data-content fw-800 gold-text">{{ user.email }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Телефон:</p>
+			<p class="user-card__block-data-content fw-800">{{ user.phone || "Неизвестно" }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Веб-Сайт:</p>
+			<p class="user-card__block-data-content fw-800 gold-text">{{ user.website || "Неизвестно" }}</p>
+		</div>
+	</div>
+
+	<div class="user-card__block">
+		<div class="user-card__block-title-wrapper">
+			<span class="user-card__block-title">Адрес Проживания</span>
+			<span class="user-card__block-limiter"></span>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Город:</p>
+			<p class="user-card__block-data-content fw-800">{{ user.address.city }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Улица:</p>
+			<p class="user-card__block-data-content fw-800">{{ user.address.street }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Офис:</p>
+			<p class="user-card__block-data-content fw-800">{{ user.address.suite || "Неизвестно" }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Индекс:</p>
+			<p class="user-card__block-data-content fw-800">{{ user.address.zipcode }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Координаты:</p>
+			<p class="user-card__block-data-content user-card__block-cordinates fw-800">{{ user.address.geo.lat }}</p>
+			<p class="user-card__block-data-content user-card__block-cordinates fw-800">{{ user.address.geo.lng }}</p>
+		</div>
+	</div>
+
+	<div class="user-card__block">
+		<div class="user-card__block-title-wrapper">
+			<span class="user-card__block-title">Место работы</span>
+			<span class="user-card__block-limiter"></span>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Компания:</p>
+			<p class="user-card__block-data-content fw-800">{{ user.company.name }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Миссия:</p>
+			<p class="user-card__block-data-content fw-800">{{ user.company.catchPhrase || "Неизвестно" }}</p>
+		</div>
+		<div class="user-card__block-label-wrapper fz-14px">
+			<p class="user-card__block-label fw-400">Специализация:</p> 
+			<p class="user-card__block-data-content fw-800">{{ user.company.bs || "Неизвестно" }}</p>
+		</div>
+	</div>
+
+	<button
+	  class="user-card__delete-btn"
+		id="card-delete-btn"
+		type="button"
+		(click)="onDeleteCard(user.id)"
+	>
+	  Delete user
+	</button>
+</div>

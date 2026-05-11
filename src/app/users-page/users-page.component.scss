@@ -16,6 +16,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 70px 30px;
+		margin-bottom: 50px;
 	}
 
 	&__not-have-users-container {
@@ -37,74 +38,12 @@
 	}
 }
 
-.user-card {
-	&__wrapper {
-		max-width: 372px;
-		min-height: 630px;
-		padding: 35px 30px 50px;
-		background-color: #fff;
-		box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.06);
+.create-user-form {
+	display: block;
+	margin-bottom: 20px;
+}
 
-		border-top: 5px solid #D4A373;
-		border-radius: 5px;
-	}
-
-	&__title {
-		font-weight: 800;
-		font-size: 26px;
-		line-height: 29.9px;
-		margin-bottom: 3px;
-	}
-
-	&__user-name {
-		font-weight: 700;
-		font-size: 15px;
-		line-height: 17.25px;
-		color: rgba(212, 163, 115, 1);
-		margin-bottom: 45px;
-	}
-
-	&__block {
-		margin-bottom: 25px;
-
-		&-title-wrapper {
-			display: flex;
-			align-items: center;
-			margin-bottom: 13px;
-		}
-
-		&-title {
-			font-weight: 800;
-			font-size: 12px;
-			letter-spacing: 1.2px;
-			vertical-align: middle;
-			text-transform: uppercase;
-			margin-right: 11px;
-		}
-
-		&-limiter {
-			width: 288px;
-			height: 2px;
-			background-color: var(--section-bg-white-color);
-		}
-
-		&-label-wrapper {
-			display: flex;
-			justify-content: space-between;
-			font-size: 14px;
-			margin-bottom: 10px;
-		}
-
-		&-label {
-			font-weight: 400;
-			color: rgba(102, 124, 124, 1);
-		}
-
-		&-cordinates {
-			padding: 1px 6px;
-			background-color: var(--section-bg-white-color);
-			border-radius: 4px;
-			border: 1px solid gray;
-		}
-	}
+.users-filter-container {
+	display: inline-block;
+	margin-bottom: 30px;
 }
